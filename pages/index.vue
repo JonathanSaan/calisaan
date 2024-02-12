@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col flex-wrap">
 	  <div class="flex mb-4 max-lg:min-h-[45rem] min-h-[50rem] max-lg:h-[70vw] h-[39vw]">
-      <img class="h-full w-screen object-cover pointer-events-none brightness-75" src="public/banner.jpg" alt="Banner Image">
+      <img class="h-full w-screen max-lg:object-right object-cover pointer-events-none brightness-75 text-transparent" src="/banner.jpg" alt="Banner Image">
       <section class="absolute text-center text-white max-lg:mt-[8rem] mt-[11vw] max-lg:ml-0 ml-[9vw]">
         <h1 class="font-bold max-lg:text-3xl text-6xl">Train Like a Pro. Exclusive Equipment!</h1>
         <h2 class="max-lg:text-xl text-4xl mx-auto mt-5 max-lg:w-11/12 w-[55rem]">Elevate Your Fitness Experience with Premium Gear for an Unparalleled Workout Journey.</h2>
