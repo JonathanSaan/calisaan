@@ -16,7 +16,7 @@
         <div class="mt-4 flex justify-between">
           <div>
             <h3 class="text-sm text-gray-700">
-              <NuxtLink :to="product.href">
+              <NuxtLink :to="`/product/${product.id}/${product.slug}`">
                 <span aria-hidden="true" class="absolute inset-0" />
                 {{ product.name }}
               </NuxtLink>
@@ -31,5 +31,5 @@
 </template>
 
 <script setup lang="ts">
-import products from "../data/products";
+const { data: products } = await useFetch('/api/products');
 </script>
