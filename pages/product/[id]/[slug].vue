@@ -11,7 +11,7 @@
 <script setup lang="ts">
 const { id, slug } = useRoute().params;
 //const url = "/api/product";
-const url = `/api/product/${id}/${slug}`;
+const url = `/api/getProduct/${id}/${slug}`;
 
 const { data: product } = await useFetch(url, { key: id, slug })
 
