@@ -9,7 +9,7 @@
 	  </div>
 
     <div class="my-14 p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-14 items-start mx-auto">
-      <div v-for="product in products" :key="product.id" class="group relative p-5 border-2 border-gray">
+      <div v-for="product in displayedProducts" :key="product.id" v-if="product" class="group relative p-5 border-2 border-gray">
         <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
           <img :src="product.imageSrc" :alt="product.imageAlt" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
         </div>
@@ -26,10 +26,39 @@
           <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
         </div>
       </div>
+      
+      <button v-if="showSeeMoreButton" @click="toggleProducts" class="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        {{ showAllProducts ? 'See less' : 'See more' }}
+      </button>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const displayedProducts = ref([]);
+const showAllProducts = ref(false);
+const showSeeMoreButton = ref(false);
+
 const { data: products } = await useFetch('/api/products');
+
+onMounted(() => {
+  showSeeMoreButton.value = products.length > 6;
+  console.log(showSeeMoreButton.value)
+  showFirstSixProducts();
+});
+
+function showFirstSixProducts() {
+  displayedProducts.value = products.slice(0, 6);
+}
+
+function toggleProducts() {
+  showAllProducts.value = !showAllProducts.value;
+
+  if (showAllProducts.value) {
+    return displayedProducts.value = products;
+  } 
+  showFirstSixProducts();
+}
 </script>
