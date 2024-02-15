@@ -22,7 +22,7 @@
     </div>
     
     <footer class="flex justify-center items-center h-20">
-      <p>&copy; 2024 <a class="underline" href="https://jonathansaan.github.io/portfolio" target="_blank">Jonathan Saan.</a> All rights reserved.</p>
+      <p>&copy; 2024 <NuxtLink class="underline" to="https://jonathansaan.github.io/portfolio" target="_blank">Jonathan Saan.</NuxtLink> All rights reserved.</p>
     </footer>
   </div>
 </template>
