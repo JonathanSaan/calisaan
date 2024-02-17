@@ -7,6 +7,7 @@ export interface Product {
   description: string;
   price: string;
   color: string;
+  tag: Array<string>;
 }
 
 const products: Product[] = [
