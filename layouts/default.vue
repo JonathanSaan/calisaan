@@ -22,7 +22,7 @@
       <slot />
     </div>
     
-    <footer class="flex justify-center items-center outline-none border-t-2 border-gray-900 h-20">
+    <footer class="flex justify-center items-center outline-none h-20">
       <p>&copy; 2024 <NuxtLink class="underline" to="https://jonathansaan.github.io/portfolio" target="_blank">Jonathan Saan.</NuxtLink> All rights reserved.</p>
     </footer>
   </div>
