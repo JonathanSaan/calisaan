@@ -11,8 +11,8 @@
         
         <form class="flex flex-col mt-auto">
           <div class="relative flex">
-          	<button type="button" @click="decrementQuantity" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-black hover:bg-zinc-900 active:bg-zinc-800 border-black border rounded-s-lg p-3 px-8 h-11 focus:outline-none">
-              <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+          	<button type="button" @click="decrementQuantity" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-black hover:bg-zinc-900 active:bg-zinc-800 border-none rounded-s-lg p-3 px-8 h-11 focus:outline-none">
+              <svg class="w-3 h-3 text-gray-900 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
               </svg>
           	</button>
@@ -22,19 +22,19 @@
         	  v-model="quantity"
         	  @input="handleInput"
         	  aria-describedby="helper-text-explanation"
-        	  class="outline-none bg-gray-50 py-2.5 h-11 w-full text-center text-black text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none block bg-white border-y-2 border-black"
+        	  class="outline-none bg-gray-50 py-2.5 h-11 w-28 text-center text-black text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none block bg-white border-y-2 border-black"
         	  placeholder="1"
         	  required
       		/>
       		
-          	<button type="button" @click="incrementQuantity" id="increment-button" data-input-counter-increment="quantity-input" class="bg-black hover:bg-zinc-900 active:bg-zinc-800 border-black border rounded-e-lg p-3 px-8 h-11 focus:outline-none">
-              <svg class="w-3 h-3 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+          	<button type="button" @click="incrementQuantity" id="increment-button" data-input-counter-increment="quantity-input" class="bg-black hover:bg-zinc-900 active:bg-zinc-800 border-none rounded-e-lg p-3 px-8 h-11 focus:outline-none">
+              <svg class="w-3 h-3 text-white text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
               </svg>
           	</button>
           </div>
           
-          <button class="mt-9 py-5 w-full uppercase text-lg bg-black hover:bg-zinc-900 active:bg-zinc-800 text-white rounded-lg shadow-md outline-none">
+          <button class="mt-9 h-16 w-full uppercase bg-black hover:bg-zinc-900 active:bg-zinc-800 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
             add to card
           </button>
         </form>

@@ -26,11 +26,9 @@
       </NuxtLink>
     </div>
     
-    <div class="mx-auto">
-      <button class="my-14 py-4 w-48 text-lg bg-black hover:bg-zinc-900 focus:bg-zinc-800 text-white rounded-lg shadow-md outline-none">
-        See more
-      </button>
-    </div>
+    <button class="my-14 mx-auto h-14 w-48 text-lg bg-black hover:bg-zinc-900 focus:bg-zinc-800 text-white rounded-lg shadow-md outline-none">
+      See more
+    </button>
   </div>
 </template>
 
