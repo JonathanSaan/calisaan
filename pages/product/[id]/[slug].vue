@@ -1,43 +1,115 @@
 <template>
-  <div class="flex justify-center">
-    <div v-if="product && !pending" class="flex lg:mt-14 lg:h-[50rem] w-auto">
-      <div>
-        <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="mr-7 h-[37rem] w-[31rem] pointer-events-none" />
-      </div>
-      <div class="flex flex-col pt-6 lg:h-[32rem] w-[27rem]">
-        <h1 class="text-2xl font-medium text-gray-900">{{ product.name }}</h1>
-        <h2 class="text-3xl font-medium my-1 text-gray-900">{{ product.price }}</h2>
-        <h3 class="text-lg font-medium mt-4 text-gray-900">{{ product.description }}</h3>
+  <div class="flex lg:justify-center">
+    <div v-if="product && !pending" class="flex flex-col">
+      <div class="flex mx-auto mt-5 lg:mt-10 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[76rem] lg:h-[50rem]">
+        <div>
+          <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="max-lg:mx-auto max-sm:h-[40rem] max-md:h-[45rem] max-lg:h-[54rem] lg:h-[50rem] w-[41rem] pointer-events-none" />
+        </div>
+        <div class="flex flex-col pt-4 lg:pt-6 w-auto lg:w-[32rem] lg:ml-auto">
+          <h1 class="text-3xl font-medium text-gray-900">{{ product.name }}</h1>
+          <h2 class="text-4xl font-medium my-3 text-gray-900">{{ product.price }}</h2>
+          <h3 class="text-2xl font-medium mt-5 text-gray-900">{{ product.description }}</h3>
         
-        <form class="flex flex-col mt-auto">
-          <div class="relative flex">
-          	<button type="button" @click="decrementQuantity" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-black hover:bg-zinc-900 active:bg-zinc-800 border-none rounded-s-lg p-3 px-8 h-11 focus:outline-none">
-              <svg class="w-3 h-3 text-gray-900 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
-              </svg>
-          	</button>
-          	
-          	<input
-        	  type="number"
-        	  v-model="quantity"
-        	  @input="handleInput"
-        	  aria-describedby="helper-text-explanation"
-        	  class="outline-none bg-gray-50 py-2.5 h-11 w-28 text-center text-black text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none block bg-white border-y-2 border-black"
-        	  placeholder="1"
-        	  required
-      		/>
-      		
-          	<button type="button" @click="incrementQuantity" id="increment-button" data-input-counter-increment="quantity-input" class="bg-black hover:bg-zinc-900 active:bg-zinc-800 border-none rounded-e-lg p-3 px-8 h-11 focus:outline-none">
-              <svg class="w-3 h-3 text-white text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-              </svg>
-          	</button>
-          </div>
-          
-          <button class="mt-9 h-16 w-full uppercase bg-black hover:bg-zinc-900 active:bg-zinc-800 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
+          <button class="mt-16 lg:mt-32 h-16 w-full uppercase bg-black hover:bg-zinc-900 active:bg-zinc-800 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
             add to card
           </button>
-        </form>
+        </div>
+      </div>
+      
+      <div class="pt-24 lg:pt-10 pb-10 lg:pb-16">
+        <h2 class="max-lg:px-4 mb-6 lg:mb-8 text-3xl font-bold">Related Products</h2>
+        <ul class="flex max-lg:px-4 w-full gap-4 overflow-x-auto pt-1 w-screen lg:w-[70rem] xl:w-[76rem]">
+          <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+          	  <div>
+                <h3 class="text-sm text-gray-700">
+              	  <span aria-hidden="true" class="inset-0" />
+              	  {{ product.name }}
+            	  </h3>
+            	  <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+          	  </div>
+          	  <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+        	  </div>
+      	  </li>
+      	  <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+          	  <div>
+                <h3 class="text-sm text-gray-700">
+              	  <span aria-hidden="true" class="inset-0" />
+              	  {{ product.name }}
+            	  </h3>
+            	  <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+          	  </div>
+          	  <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+        	  </div>
+      	  </li>
+          <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+          	  <div>
+                <h3 class="text-sm text-gray-700">
+              	  <span aria-hidden="true" class="inset-0" />
+              	  {{ product.name }}
+            	  </h3>
+            	  <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+          	  </div>
+          	  <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+        	  </div>
+      	  </li>
+          <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+          	  <div>
+                <h3 class="text-sm text-gray-700">
+              	  <span aria-hidden="true" class="inset-0" />
+              	  {{ product.name }}
+            	  </h3>
+            	  <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+          	  </div>
+          	  <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+        	  </div>
+      	  </li>
+          <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+          	  <div>
+                <h3 class="text-sm text-gray-700">
+              	  <span aria-hidden="true" class="inset-0" />
+              	  {{ product.name }}
+            	  </h3>
+            	  <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+          	  </div>
+          	  <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+        	  </div>
+      	  </li>
+          <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+          	  <div>
+                <h3 class="text-sm text-gray-700">
+              	  <span aria-hidden="true" class="inset-0" />
+              	  {{ product.name }}
+            	  </h3>
+            	  <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+          	  </div>
+          	  <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+        	  </div>
+      	  </li>
+        </ul>
       </div>
     </div>
     
@@ -50,24 +122,6 @@
 <script setup lang="ts">
 const { id, slug } = useRoute().params;
 const { data: product, pending } = await useFetch(`/api/product/${id}/${slug}`);
-
-const quantity = ref(1);
-
-const handleInput = () => {
-  if (quantity.value < 1) {
-    quantity.value = 1;
-  }
-};
-
-const incrementQuantity = () => {
-  quantity.value++;
-};
-
-const decrementQuantity = () => {
-  if (quantity.value > 1) {
-    quantity.value--;
-  }
-};
 
 useHead({
   title: `${product.value ? product.value.name + " | " : ""}CaliSaan`,
