@@ -20,8 +20,8 @@
         <h2 class="max-lg:px-4 mb-6 lg:mb-8 text-3xl font-bold">Related Products</h2>
         <ul class="flex max-lg:px-4 w-full gap-4 overflow-x-auto pt-1 w-screen lg:w-[70rem] xl:w-[76rem]">
           <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
-            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
-              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
             </div>
             <div class="mt-4 flex justify-between">
           	  <div>
@@ -35,8 +35,38 @@
         	  </div>
       	  </li>
       	  <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
-            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
-              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
+            </div>
+            <div class="mt-4 flex justify-between">
+          	  <div>
+                <h3 class="text-sm text-gray-700">
+              	  <span aria-hidden="true" class="inset-0" />
+              	  {{ product.name }}
+            	  </h3>
+            	  <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+          	  </div>
+          	  <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+        	  </div>
+      	  </li>
+      	  <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
+            </div>
+            <div class="mt-4 flex justify-between">
+          	  <div>
+                <h3 class="text-sm text-gray-700">
+              	  <span aria-hidden="true" class="inset-0" />
+              	  {{ product.name }}
+            	  </h3>
+            	  <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>
+          	  </div>
+          	  <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+        	  </div>
+      	  </li>
+      	  <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
             </div>
             <div class="mt-4 flex justify-between">
           	  <div>
@@ -50,8 +80,8 @@
         	  </div>
       	  </li>
           <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
-            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
-              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
             </div>
             <div class="mt-4 flex justify-between">
           	  <div>
@@ -65,8 +95,8 @@
         	  </div>
       	  </li>
           <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
-            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
-              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
             </div>
             <div class="mt-4 flex justify-between">
           	  <div>
@@ -80,8 +110,8 @@
         	  </div>
       	  </li>
           <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
-            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
-              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
             </div>
             <div class="mt-4 flex justify-between">
           	  <div>
@@ -95,8 +125,8 @@
         	  </div>
       	  </li>
           <li class="group max-lg:h-[24.5rem] p-5 mr-4 border-2 border-gray">
-            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 w-[15rem]">
-              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
+              <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
             </div>
             <div class="mt-4 flex justify-between">
           	  <div>
