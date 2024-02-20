@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <header class="shadow-sm flex justify-between items-center max-lg:px-6 px-8 max-lg:h-24 h-24 text-center">
-      <NuxtLink to="/" class="font-bold max-lg:text-3xl text-4xl ">CaliSaan</NuxtLink>
+      <NuxtLink to="/" class="font-bold max-lg:text-3xl text-4xl">CaliSaan</NuxtLink>
       <ul class="flex mr-4 items-center">
         <li>
           <form class="min-md:w-[30rem]">
