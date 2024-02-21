@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/ui", "@nuxt/image", "nuxt-icon"],
+  modules: ["@nuxt/ui", "@nuxt/image"],
   target: "static",
   build: {
     extractCSS: true,
