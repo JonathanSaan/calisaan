@@ -8,22 +8,24 @@
 	    </section>
 	  </div>
 
-    <div class="mt-14 p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-14 items-start mx-auto">
-      <NuxtLink :to="`/product/${product.id}/${product.slug}`" v-for="product in allProducts" :key="product.id" class="group p-5 border-2 border-gray">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-          <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
-        </div>
-        <div class="mt-4 flex justify-between">
-          <div>
-            <h3 class="text-sm text-gray-700">
-              <span aria-hidden="true" class="inset-0" />
-              {{ product.name }}
-            </h3>
+    <ul class="mt-14 p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-14 items-start mx-auto">
+      <li v-for="product in allProducts" :key="product.id" class="group p-5 border-2 border-gray">
+        <NuxtLink :to="`/product/${product.id}/${product.slug}`">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+            <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
           </div>
-          <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
-        </div>
-      </NuxtLink>
-    </div>
+          <div class="mt-4 flex justify-between">
+            <div>
+              <h3 class="text-sm text-gray-700">
+                <span aria-hidden="true" class="inset-0" />
+                {{ product.name }}
+              </h3>
+            </div>
+            <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+          </div>
+        </NuxtLink>
+      </li>
+    </ul>
     
     <button class="my-14 mx-auto h-14 w-48 text-lg bg-black hover:bg-zinc-900 focus:bg-zinc-800 text-white rounded-lg shadow-md outline-none">
       See more
