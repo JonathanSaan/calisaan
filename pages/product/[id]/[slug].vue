@@ -1,24 +1,40 @@
 <template>
   <div class="flex lg:justify-center">
     <div v-if="product && !pending" class="flex flex-col">
-      <div class="flex mx-auto mt-5 lg:mt-5 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[76rem] lg:h-[54rem]">
-        <div>
-          <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="max-lg:mx-auto max-sm:h-[38rem] max-md:h-[48rem] max-lg:h-[52rem] lg:h-[54rem] w-[40rem] pointer-events-none" />
-        </div>
-        <div class="flex flex-col pt-4 lg:pt-6 w-auto lg:w-[32rem] lg:ml-auto">
+      <div class="flex mx-auto mt-5 lg:mt-8 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[86rem] lg:h-[54rem]">
+        <div class="flex flex-col xl:flex-row-reverse">
+  		  <NuxtImg
+    		:src="activeImage"
+    		:alt="product.imageAlt"
+    		class="max-lg:mx-auto max-sm:h-[38rem] max-md:h-[48rem] max-lg:h-[52rem] lg:min-h-[54rem] w-[40rem] pointer-events-none"
+  		  />
+  		  <div class="flex xl:flex-col max-xl:mt-5 lg:mr-9 justify-between">
+    		<NuxtImg
+      		  v-for="(image, index) in product.imageSrc"
+      		  :key="index"
+      		  :src="image"
+      		  :alt="product.imageAlt"
+      		  @click="() => { setActiveImage(image); addBorder(index); }"
+      		  :class="[{'border-2': true, 'border-black': selectedImageIndex === index, 'border-transparent': selectedImageIndex !== index}]"
+    		  class="max-lg:mb-3 max-lg:mx-auto lg:h-34 max-md:h-40 md:h-40 max-sm:h-28 lg:w-32 max-md:w-36 md:w-36 max-sm:w-18 rounded-md cursor-pointer"
+			/>
+  		  </div>
+		</div>
+		
+        <div class="flex flex-col pt-4 lg:pt-6 w-auto lg:w-[27rem] xl:w-[33rem] lg:ml-auto">
           <h1 class="text-3xl font-medium text-gray-900">{{ product.name }}</h1>
           <h2 class="text-4xl font-medium my-3 text-gray-900">{{ product.price }}</h2>
           <h3 class="text-2xl font-medium mt-5 text-gray-900">{{ product.description }}</h3>
         
           <button class="mt-16 lg:mt-32 h-16 w-full uppercase bg-black hover:bg-zinc-900 active:bg-zinc-800 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
-            add to card
+            add to cart
           </button>
         </div>
       </div>
       
-      <div class="pt-20 lg:pt-8 pb-10 lg:pb-16">
+      <div class="mt-20 lg:mt-56 xl:mt-20 pb-10 lg:pb-16">
         <h2 class="max-lg:px-4 mb-9 lg:mb-8 text-3xl font-bold">Related Products</h2>
-        <ul class="flex max-lg:px-4 w-full gap-4 overflow-x-auto pt-1 w-screen lg:w-[70rem] xl:w-[76rem]">
+        <ul class="flex max-lg:px-4 w-full gap-4 overflow-x-auto pt-1 w-screen lg:w-[70rem] xl:w-[86rem]">
           <li v-for="product in product.similarProducts" :key="product.id" class="group max-lg:h-[23.1rem] p-5 mr-4 border-2 border-gray">
             <NuxtLink :to="`/product/${product.id}/${product.slug}`">
               <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
@@ -33,7 +49,7 @@
                 </div>
                 <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
               </div>
-        	  </NuxtLink>
+        	</NuxtLink>
       	  </li>
         </ul>
       </div>
@@ -48,6 +64,17 @@
 <script setup lang="ts">
 const { id, slug } = useRoute().params;
 const { data: product, pending } = await useFetch(`/api/product/${id}/${slug}`);
+
+const activeImage = ref(product.value.imageSrc[0]);
+const selectedImageIndex = ref(0);
+
+const setActiveImage = (newImage) => {
+  activeImage.value = newImage;
+};
+
+const addBorder = (index) => {
+  selectedImageIndex.value = index;
+};
 
 useHead({
   title: `${product.value ? product.value.name + " | " : ""}CaliSaan`,
