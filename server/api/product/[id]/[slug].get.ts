@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
       id,
       name,
       slug,
-      imageSrc[0],
+      imageSrc: imageSrc[0],
       imageAlt,
       price,
     }));
