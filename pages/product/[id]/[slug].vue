@@ -26,7 +26,7 @@
           <h2 class="text-4xl font-medium my-3 text-gray-900">{{ product.price }}</h2>
           <h3 class="text-2xl font-medium mt-5 text-gray-900">{{ product.description }}</h3>
         
-          <button class="mt-16 lg:mt-32 h-16 w-full uppercase bg-black hover:bg-zinc-900 active:bg-zinc-800 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
+          <button class="mt-16 lg:mt-32 h-16 w-full uppercase bg-black hover:bg-black/90 active:bg-black/85 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
             add to cart
           </button>
         </div>
