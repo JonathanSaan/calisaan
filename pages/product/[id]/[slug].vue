@@ -34,7 +34,7 @@
       
       <div class="mt-20 lg:mt-56 xl:mt-20 pb-10 lg:pb-16">
         <h2 class="max-lg:px-4 mb-9 lg:mb-8 text-3xl font-bold">Related Products</h2>
-        <UCarousel v-slot="{ item }" :items="product.similarProducts" class="flex w-full pt-1 w-screen lg:w-[70rem] xl:w-[86rem]" :ui="{ item: 'basis-full max-sm:basis-1/3 sm:basis-1/3 md:basis-1/5 lg:basis-1/6' }" :prev-button="{ class: 'color: bg-black hover:bg-zinc-900 active:bg-zinc-800' }" :next-button="{ class: 'color: bg-black hover:bg-zinc-900 active:bg-zinc-800' }" arrows>
+        <UCarousel v-slot="{ item }" :items="product.similarProducts" class="flex w-full pt-1 w-screen lg:w-[70rem] xl:w-[86rem]" :ui="{ item: 'basis-full max-sm:basis-1/3 sm:basis-1/3 md:basis-1/5 lg:basis-1/6' }" :prev-button="{ class: 'color: bg-black hover:bg-black/85 active:bg-black/75' }" :next-button="{ class: 'color: bg-black hover:bg-black/85 active:bg-black/75' }" arrows>
     	  <div :key="item.id" class="flex group max-lg:h-[23rem] max-lg:ml-5 lg:mr-5 border-2 border-gray" draggable="false">
             <NuxtLink :to="`/product/${item.id}/${item.slug}`" class="p-5">
               <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
