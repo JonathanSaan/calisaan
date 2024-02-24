@@ -11,6 +11,9 @@ export default defineNuxtConfig({
       }
     }
   },
+  colorMode: {
+    preference: "light"
+  },
   image: {
     formats: {
       webp: {

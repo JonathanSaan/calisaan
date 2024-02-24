@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col min-h-screen bg-white text-black">
+  <div class="flex flex-col min-h-screen">
     <header class="shadow-sm flex justify-between items-center max-lg:px-6 px-8 max-lg:h-24 h-24 text-center">
       <NuxtLink to="/" class="font-bold max-lg:text-3xl text-4xl">CaliSaan</NuxtLink>
       <ul class="flex lg:mr-1 align-items items-center h-9">
         <li>
           <form class="min-md:w-[30rem]">
-            <input type="text" placeholder="Search" class="outline-none border-b-2 border-gray-900 bg-white text-xl placeholder-gray-900 text-gray-900 h-9 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
+            <input type="text" placeholder="Search" class="outline-none border-b-2 border-gray-900 text-xl placeholder-gray-900 text-gray-900 h-9 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
             <button class="max-lg:ml-5 ml-6">
               <Icon name="carbon:search" color="black" size="22" title="Search" aria-hidden="true" />
             </button>
@@ -16,8 +16,8 @@
             <Icon name="clarity:shopping-cart-solid" color="black" size="22" title="Add to cart" aria-hidden="true" />
           </button>
           
-          <USlideover v-model="isOpen" :ui="{ background: 'dark:bg-white', overlay: { background: 'dark:bg-black/65' } }">
-      		<UCard class="flex flex-col flex-1 text-black" :ui="{ background: 'dark:bg-white', body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-700 dark:divide-gray-700' }">
+          <USlideover v-model="isOpen" :ui="{ background: 'bg-white', overlay: { background: 'bg-black/65' } }">
+      		<UCard class="flex flex-col flex-1 text-black" :ui="{ background: 'bg-white', body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-700' }">
         	  <template #header>
           		<div class="flex items-center justify-between">
           		  <h3 class="text-2xl leading-6">Cart</h3>
