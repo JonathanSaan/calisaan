@@ -1,12 +1,11 @@
 import products from "../../../../data/products";
 
 export default defineEventHandler(async (event) => {
-  const requestId = event.context.params?.id || 0;
-  const requestSlug = event.context.params?.slug || null;
+  const { id, slug } = event.context.params;
   
   const product = products.find(product => 
-    (requestId && product.id.toString() === requestId) && 
-    (requestSlug && product.slug === requestSlug)
+    (id && product.id.toString() === id) && 
+    (slug && product.slug === slug)
   );
   
   const similarProducts = products
@@ -19,8 +18,6 @@ export default defineEventHandler(async (event) => {
       imageAlt,
       price,
     }));
-
-  product.similarProducts = similarProducts;
-
-  return product;
+  
+  return { ...product, similarProducts };
 });
