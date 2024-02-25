@@ -3,39 +3,39 @@
     <div v-if="!pending && product" class="flex flex-col">
       <div class="flex mx-auto mt-5 lg:mt-8 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[86rem] lg:h-[54rem]">
         <div class="flex flex-col xl:flex-row-reverse">
-  		  <NuxtImg
-    		:src="activeImage"
-    		:alt="product.imageAlt"
-    		class="max-lg:mx-auto max-sm:h-[38rem] max-md:h-[48rem] max-lg:h-[52rem] lg:min-h-[54rem] w-[40rem] pointer-events-none"
-  		  />
-  		  <div class="flex xl:flex-col max-xl:mt-5 lg:mr-8 justify-between">
-    		<NuxtImg
-      		  v-for="(image, index) in product.imageSrc"
-      		  :key="index"
-      		  :src="image"
-      		  :alt="product.imageAlt"
-      		  @click="() => { setActiveImage(image); addBorder(index); }"
-      		  :class="[{'border-2': true, 'border-black': selectedImageIndex === index, 'border-transparent': selectedImageIndex !== index}]"
-    		  class="max-lg:mb-3 max-lg:mx-auto lg:h-34 max-md:h-40 md:h-40 max-sm:h-28 lg:w-32 max-md:w-36 md:w-36 max-sm:w-18 rounded-md cursor-pointer"
-			/>
-  		  </div>
-		</div>
-		
+          <NuxtImg
+            :src="activeImage"
+            :alt="product.imageAlt"
+            class="max-lg:mx-auto max-sm:h-[38rem] max-md:h-[48rem] max-lg:h-[52rem] lg:min-h-[54rem] w-[40rem] pointer-events-none"
+          />
+          <div class="flex xl:flex-col max-xl:mt-5 lg:mr-8 justify-between">
+            <NuxtImg
+              v-for="(image, index) in product.imageSrc"
+              :key="index"
+              :src="image"
+              :alt="product.imageAlt"
+              @click="() => { setActiveImage(image); addBorder(index); }"
+              :class="[{'border-2': true, 'border-black': selectedImageIndex === index, 'border-transparent': selectedImageIndex !== index}]"
+              class="max-lg:mb-3 max-lg:mx-auto lg:h-34 max-md:h-40 md:h-40 max-sm:h-28 lg:w-32 max-md:w-36 md:w-36 max-sm:w-18 rounded-md cursor-pointer"
+            />
+          </div>
+        </div>
+
         <div class="flex flex-col pt-4 lg:pt-6 w-auto lg:w-[27rem] xl:w-[33rem] lg:ml-auto">
           <h1 class="text-3xl font-medium text-gray-900">{{ product.name }}</h1>
           <h2 class="text-4xl font-medium my-3 text-gray-900">{{ product.price }}</h2>
           <h3 class="text-2xl font-medium mt-5 text-gray-900">{{ product.description }}</h3>
-        
+
           <button class="mt-16 lg:mt-32 h-16 w-full uppercase bg-black hover:bg-black/90 active:bg-black/85 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
             add to cart
           </button>
         </div>
       </div>
-      
-      <div class="mt-20 lg:mt-56 xl:mt-20 pb-10 lg:pb-16">
+
+      <div class="mt-28 lg:mt-[17rem] xl:mt-20 pb-10 lg:pb-16">
         <h2 class="max-lg:px-4 mb-9 lg:mb-8 text-3xl font-semibold">Related Products</h2>
         <UCarousel v-slot="{ item }" :items="product.similarProducts" class="flex w-full pt-1 w-screen lg:w-[70rem] xl:w-[86rem]" :ui="{ item: 'basis-full max-sm:basis-1/3 sm:basis-1/3 md:basis-1/5 lg:basis-1/6' }" :prev-button="{ class: 'color: bg-black hover:bg-black/85 active:bg-black/75' }" :next-button="{ class: 'color: bg-black hover:bg-black/85 active:bg-black/75' }" arrows>
-    	  <div :key="item.id" class="flex group max-lg:h-[23rem] max-lg:ml-5 lg:mr-5 border-2 border-gray" draggable="false">
+          <div :key="item.id" class="flex group max-lg:h-[23rem] max-lg:ml-5 lg:mr-5 border-2 border-gray" draggable="false">
             <NuxtLink :to="`/product/${item.id}/${item.slug}`" class="p-5">
               <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 h-72 xl:h-80 min-w-[15rem]">
                 <NuxtImg :src="item.imageSrc" :alt="item.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
@@ -49,12 +49,12 @@
                 </div>
                 <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
               </div>
-        	</NuxtLink>
-      	  </div>
-  		</UCarousel>
+            </NuxtLink>
+          </div>
+        </UCarousel>
       </div>
     </div>
-    
+
     <div v-if="pending">
       <p>loading...</p>
     </div>
