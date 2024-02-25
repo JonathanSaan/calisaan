@@ -8,10 +8,10 @@
 	    </section>
 	  </div>
 
-    <ul class="mt-14 p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 relative xl:grid-cols-3 2xl:grid-cols-4 gap-14 items-start mx-auto">
+    <ul class="mt-14 max-sm:mx-[1rem] max-md:mx-[3rem] max-lg:mx-[6rem] p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 relative lg:grid-cols-3 2xl:grid-cols-4 gap-14 items-start mx-auto">
       <li v-for="product in allProducts" :key="product.id" class="flex group border-2 border-gray">
         <NuxtLink :to="`/product/${product.id}/${product.slug}`" class="p-5">
-          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+          <div class="rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80 ">
             <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
           </div>
           <div class="mt-4 flex justify-between">
