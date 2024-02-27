@@ -14,7 +14,7 @@
               :key="index"
               :src="image"
               :alt="product.imageAlt"
-              @click="() => { setActiveImage(image); addBorder(index); }"
+              @click="() => { setActiveImageOrSelectSize(image, 'image'); setSelectedStyle(index, 'image'); }"
               :class="[{'border-2': true, 'border-black': selectedImageIndex === index, 'border-transparent': selectedImageIndex !== index}]"
               class="max-lg:mb-3 max-lg:mx-auto lg:h-34 max-md:h-40 md:h-40 max-sm:h-28 lg:w-32 max-md:w-36 md:w-36 max-sm:w-18 rounded-md cursor-pointer"
             />
@@ -35,7 +35,7 @@
 		      <button
                 v-for="(size, index) in product.size"
                 :key="index"
-                @click="() => { selectSize(size); addBackground(index)}"
+                @click="() => { setActiveImageOrSelectSize(size); setSelectedStyle(index)}"
                 :class="{ 'bg-black border-black text-white': selectedSizeIndex === index, 'bg-white border-black/70': selectedSizeIndex !== index }"
                 class="border rounded-lg font-medium mr-3 py-4 w-14"
               >
@@ -91,17 +91,17 @@ const selectedImageIndex = ref(0);
 const selectedSize = ref(product.value.size ? product.value.size[0] : null);
 const selectedSizeIndex = ref(0);
 
-const setActiveImage = (newImage) => {
-  activeImage.value = newImage;
-};
-const addBorder = (index) => {
-  selectedImageIndex.value = index;
+const setActiveImageOrSelectSize = (newValue, type) => {
+  if (type === "image") {
+    return activeImage.value = newValue;
+  }
+  selectedSize.value = newValue;
 };
 
-const selectSize = (size) => {
-  selectedSize.value = size;
-};
-const addBackground = (index) => {
+const setSelectedStyle = (index, type) => {
+  if (type === "image") {
+    return selectedImageIndex.value = index;
+  } 
   selectedSizeIndex.value = index;
 };
 
