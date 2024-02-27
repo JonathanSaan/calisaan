@@ -24,8 +24,28 @@
         <div class="flex flex-col pt-4 lg:pt-6 w-auto lg:w-[27rem] xl:w-[33rem] lg:ml-auto">
           <h1 class="text-3xl font-medium text-gray-900">{{ product.name }}</h1>
           <h2 class="text-4xl font-medium my-3 text-gray-900">{{ product.price }}</h2>
-          <h3 class="text-2xl font-medium mt-5 text-gray-900">{{ product.description }}</h3>
-
+		  
+		  <div v-if="product.size" class="flex mt-2 flex-col">
+		    <label>
+		      <span class="font-semibold text-xl">Size: </span>
+		      <span class="selected-value font-medium text-xl option-label">{{ selectedSize }}</span>
+		    </label>
+		    
+		    <div class="mt-3 mb-5">
+		      <button
+                v-for="(size, index) in product.size"
+                :key="index"
+                @click="() => { selectSize(size); addBackground(index)}"
+                :class="{ 'bg-black border-black text-white': selectedSizeIndex === index, 'bg-white border-black/70': selectedSizeIndex !== index }"
+                class="border rounded-lg font-medium mr-3 py-4 w-14"
+              >
+                {{ size }}
+              </button>
+            </div>
+		  </div>
+		  
+          <p class="text-2xl font-medium mt-2 text-gray-900">{{ product.description }}</p>
+		  
           <button class="mt-16 lg:mt-32 h-16 w-full uppercase bg-black hover:bg-black/90 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
             add to cart
           </button>
@@ -68,12 +88,21 @@ const { data: product, pending } = await useFetch(`/api/product/${id}/${slug}`);
 const activeImage = ref(product.value.imageSrc[0]);
 const selectedImageIndex = ref(0);
 
+const selectedSize = ref(product.value.size ? product.value.size[0] : null);
+const selectedSizeIndex = ref(0);
+
 const setActiveImage = (newImage) => {
   activeImage.value = newImage;
 };
-
 const addBorder = (index) => {
   selectedImageIndex.value = index;
+};
+
+const selectSize = (size) => {
+  selectedSize.value = size;
+};
+const addBackground = (index) => {
+  selectedSizeIndex.value = index;
 };
 
 useHead({
