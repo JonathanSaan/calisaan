@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import banner from "~/assets/banner.webp";
+import banner from "~/assets/images/banner.webp";
 
 const { data: allProducts } = await useFetch("/api/getAllProducts");
 </script>
