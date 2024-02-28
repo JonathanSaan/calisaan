@@ -8,7 +8,7 @@
             :alt="product.imageAlt"
             class="max-lg:mx-auto max-sm:h-[38rem] max-md:h-[48rem] max-lg:h-[52rem] lg:min-h-[54rem] w-[40rem] pointer-events-none"
           />
-          <div class="flex xl:flex-col max-xl:mt-5 lg:mr-8 justify-between">
+          <div class="flex xl:flex-col lg:ml-0 md:ml-[5vw] max-xl:mt-5 lg:mr-8">
             <NuxtImg
               v-for="(image, index) in product.imageSrc"
               :key="index"
@@ -16,7 +16,7 @@
               :alt="product.imageAlt"
               @click="() => { setActiveImageOrSelectSize(image, 'image'); setSelectedStyle(index, 'image'); }"
               :class="[{'border-2': true, 'border-black': selectedImageIndex === index, 'border-transparent': selectedImageIndex !== index}]"
-              class="max-lg:mb-3 max-lg:mx-auto lg:h-34 max-md:h-40 md:h-40 max-sm:h-28 lg:w-32 max-md:w-36 md:w-36 max-sm:w-18 rounded-md cursor-pointer"
+              class="max-lg:mr-4 lg:mr-1 max-lg:mb-3 mb-[1.05rem] lg:h-34 max-md:h-40 md:h-40 max-sm:h-32 lg:w-32 max-md:w-32 max-sm:w-24 rounded-md cursor-pointer"
             />
           </div>
         </div>
@@ -25,14 +25,14 @@
           <h1 class="text-3xl font-medium text-gray-900">{{ product.name }}</h1>
           <h2 class="text-4xl font-medium my-3 text-gray-900">{{ product.price }}</h2>
 		  
-		  <div v-if="product.size" class="flex mt-2 flex-col">
-		    <label>
-		      <span class="font-semibold text-xl">Size: </span>
-		      <span class="selected-value font-medium text-xl option-label">{{ selectedSize }}</span>
-		    </label>
+          <div v-if="product.size" class="flex mt-2 flex-col">
+            <label>
+              <span class="font-semibold text-xl">Size: </span>
+              <span class="selected-value font-medium text-xl option-label">{{ selectedSize }}</span>
+            </label>
 		    
-		    <div class="mt-3 mb-5">
-		      <button
+            <div class="mt-3 mb-5">
+              <button
                 v-for="(size, index) in product.size"
                 :key="index"
                 @click="() => { setActiveImageOrSelectSize(size); setSelectedStyle(index)}"
@@ -42,7 +42,7 @@
                 {{ size }}
               </button>
             </div>
-		  </div>
+          </div>
 		  
           <p class="text-2xl font-medium mt-2 text-gray-900">{{ product.description }}</p>
 		  
