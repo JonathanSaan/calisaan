@@ -10,5 +10,5 @@ export default defineEventHandler(async (event) => {
     price,
   }));
   
-  return allProducts;
+  return allProducts.slice(0, 6);
 })
