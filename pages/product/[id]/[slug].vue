@@ -1,7 +1,7 @@
 <template>
   <div class="flex lg:justify-center">
     <div v-if="!pending && product" class="flex flex-col">
-      <div class="flex mx-auto mt-5 lg:mt-8 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[86rem] lg:h-[54rem]">
+      <div class="flex mx-auto mb-28 lg:mb-[17rem] xl:mb-20 mt-5 lg:mt-8 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[86rem] lg:h-[54rem]">
         <div class="flex flex-col xl:flex-row-reverse">
           <NuxtImg
             :src="activeImage"
@@ -16,7 +16,7 @@
               :alt="product.imageAlt"
               @click="() => { setActiveImageOrSelectSize(image, 'image'); setSelectedStyle(index, 'image'); }"
               :class="[{'border-2': true, 'border-black': selectedImageIndex === index, 'border-transparent': selectedImageIndex !== index}]"
-              class="max-lg:mr-4 lg:mr-1 max-lg:mb-3 mb-[1.05rem] lg:h-34 max-md:h-40 md:h-40 max-sm:h-32 lg:w-32 max-md:w-32 max-sm:w-24 rounded-md cursor-pointer"
+              class="max-lg:mr-5 max-xl:mr-6 xl:mr-1 max-lg:mb-3 mb-[1.8rem] lg:h-34 max-md:h-40 md:h-40 max-sm:h-32 lg:w-32 max-md:w-32 max-sm:w-24 rounded-md cursor-pointer"
             />
           </div>
         </div>
@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <div class="mt-28 lg:mt-[17rem] xl:mt-20 pb-10 lg:pb-16">
+      <div v-if="product.similarProducts && product.similarProducts.length > 0" class="pb-10 lg:pb-16">
         <h2 class="max-lg:px-4 mb-9 lg:mb-8 text-3xl font-semibold">Related Products</h2>
         <UCarousel v-slot="{ item }" :items="product.similarProducts" class="flex w-full pt-1 w-screen lg:w-[70rem] xl:w-[86rem]" :ui="{ item: 'basis-full max-sm:basis-1/3 sm:basis-1/3 md:basis-1/5 lg:basis-1/6' }" :prev-button="{ class: 'color: bg-black hover:bg-black/85 active:bg-black/75' }" :next-button="{ class: 'color: bg-black hover:bg-black/85 active:bg-black/75' }" arrows>
           <div :key="item.id" class="flex group max-lg:h-[23rem] max-lg:ml-5 lg:mr-5 border-2 border-gray" draggable="false">
@@ -67,7 +67,7 @@
                     {{ item.name }}
                   </h3>
                 </div>
-                <p class="text-sm font-medium text-gray-900">{{ product.price }}</p>
+                <p class="text-sm font-medium text-gray-900">{{ item.price }}</p>
               </div>
             </NuxtLink>
           </div>
