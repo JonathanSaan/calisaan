@@ -1,7 +1,12 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <header class="shadow-sm flex justify-between items-center max-lg:px-6 px-8 max-lg:h-24 h-24 text-center">
-      <NuxtLink to="/" class="font-medium text-4xl">CaliSaan</NuxtLink>
+    <header class="shadow-sm flex justify-between items-center max-lg:pr-6 max-lg:pl-5 px-8 max-lg:h-24 h-24 text-center">
+      <NuxtLink to="/">
+        <picture>
+          <source media="(max-width: 768px)" srcset="~/assets/images/logoMobile.png" width="48" height="30" />
+          <img src="~/assets/images/logo.png" alt="logo" width="82" />
+        </picture>
+      </NuxtLink>
       <ul class="flex lg:mr-1 align-items items-center h-9">
         <li>
           <form class="min-md:w-[30rem]">
