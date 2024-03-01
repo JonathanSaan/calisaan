@@ -1,14 +1,14 @@
 <template>
   <div class="flex flex-col flex-wrap">
-	  <div class="flex mb-4 max-lg:min-h-[45rem] min-h-[50rem] max-lg:h-[70vw] h-[39vw]">
+    <div class="flex mb-4 max-lg:min-h-[45rem] min-h-[50rem] max-lg:h-[70vw] h-[39vw]">
       <img :src="banner" alt="Banner Image" class="h-full w-screen max-lg:object-right object-cover pointer-events-none brightness-75" />
       <section class="absolute text-center text-white max-lg:mt-[8rem] mt-[11vw] max-lg:ml-0 ml-[9vw]">
         <h1 class="font-semibold max-lg:text-4xl text-7xl">Train Like a Pro. Exclusive Equipment!</h1>
         <h2 class="max-lg:text-xl text-4xl mx-auto mt-5 max-lg:w-11/12 w-[55rem]">Elevate Your Fitness Experience with Premium Gear for an Unparalleled Workout Journey.</h2>
-	    </section>
-	  </div>
+      </section>
+    </div>
 
-    <ul class="mt-14 max-sm:mx-[1rem] max-md:mx-[3rem] max-lg:mx-[6rem] p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 relative lg:grid-cols-3 2xl:grid-cols-4 gap-14 items-start mx-auto">
+    <ul class="mt-14 max-sm:mx-[1rem] max-md:mx-[3rem] max-lg:mx-[6rem] p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 relative lg:grid-cols-3 gap-14 items-start mx-auto">
       <li v-for="product in allProducts" :key="product.id" class="flex group border-2 border-gray">
         <NuxtLink :to="`/product/${product.id}/${product.slug}`" class="p-5">
           <div class="rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80 ">
