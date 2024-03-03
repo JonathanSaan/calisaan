@@ -5,7 +5,7 @@ export interface Product {
   imageSrc: Array<string>;
   imageAlt: string;
   description: string;
-  price: string;
+  price: number;
   tag: Array<string>;
   size?: Array<string> | null;
 }
@@ -21,7 +21,7 @@ const products: Product[] = [
     ],
     imageAlt: "Black men's T-shirt.",
     description: "A versatile and comfortable T-Shirt for everyday wear. This classic black tee is crafted with high-quality materials, providing a perfect fit and lasting durability. Whether you're dressing up or keeping it casual, the T-Shirt is a wardrobe essential.",
-    price: "$7.99",
+    price: 7.99,
     tag: ["Clothing", "Tops Wear"],
     size: ["S", "M", "L", "XL"],
   },
@@ -36,7 +36,7 @@ const products: Product[] = [
     ],
     imageAlt: "Black sleeveless T-shirt",
     description: "Elevate your style with our versatile Black Sleeveless T-Shirt. Crafted from high-quality cotton, this modern and trendy piece is perfect for any casual occasion. The classic black color ensures easy pairing with various outfits, making it a wardrobe essential. Available in sizes from small to extra-large for a comfortable fit. Get yours today!",
-    price: "$9.99",
+    price: 9.99,
     tag: ["Clothing", "Tops Wear"],
     size: ["S", "M", "L", "XL"],
   },
@@ -51,7 +51,7 @@ const products: Product[] = [
     ],
     imageAlt: "Workout Rings Set",
     description: "Enhance your strength and stability with our Workout Rings Set. Made from durable materials, these rings are perfect for a variety of upper body exercises. The adjustable straps allow you to customize the height, making them suitable for users of all fitness levels. Whether you're working on muscle-ups, dips, or inverted rows, our Workout Rings Set is a versatile addition to your home gym. Elevate your training routine and achieve new fitness goals with these high-quality rings.",
-    "price": "$29.99",
+    price: 29.99,
     tag: ["Fitness Equipment"],
   },
   {
@@ -64,7 +64,7 @@ const products: Product[] = [
     ],
     imageAlt: "Ground Parallel Bars 37cm",
     description: "Enhance your functional training with our Ground Parallel Bars. These 37cm parallettes are perfect for a variety of exercises to build strength and stability. The sturdy construction ensures safety during your workouts. Elevate your functional training routine with these versatile parallettes.",
-    price: "$49.99",
+    price: 49.99,
     tag: ["Fitness Equipment"],
   },
   {
@@ -79,7 +79,7 @@ const products: Product[] = [
     ],
     imageAlt: "Weight Vest 10kg",
     description: "Take your workouts to the next level with our Weight Vest 10kg. Designed for added resistance during various exercises, this vest allows you to increase the intensity of your training. The adjustable straps ensure a secure and comfortable fit. Perfect for bodyweight exercises, cardio, and strength training.",
-    price: "$79.99",
+    price: 79.99,
     tag: ["Fitness Equipment"],
   },
   {
@@ -92,7 +92,7 @@ const products: Product[] = [
     ],
     imageAlt: "Black Training Pants",
     description: "Maximize your workout with our Black Training Pants. Designed for comfort and performance, these pants are made from breathable and stretchable fabric, allowing you to move freely during any exercise. The modern design and moisture-wicking technology keep you stylish and dry. Whether you're hitting the gym or going for a run, our Black Training Pants are the perfect choice. Available in sizes from small to extra-large.",
-    price: "$39.99",
+    price: 39.99,
     tag: ["Clothing", "Bottom Wear"],
     size: ["S", "M", "L", "XL"]
   },
@@ -106,7 +106,7 @@ const products: Product[] = [
     ],
     imageAlt: "Classic Black Boxer Briefs",
     description: "Experience ultimate comfort with our Classic Black Boxer Briefs. Made from a soft and breathable blend of cotton and spandex, these boxer briefs offer a snug fit and flexibility. The classic black color adds a touch of style to your underwear collection. Perfect for everyday wear, our boxer briefs provide support and comfort.",
-    price: "$14.99",
+    price: 14.99,
     tag: ["Clothing", "Bottom Wear"],
     size: ["S", "M", "L", "XL"],
   },
@@ -121,7 +121,7 @@ const products: Product[] = [
     ],
     imageAlt: "Classic Black Cap",
     description: "Complete your look with our Classic Black Cap. Made from durable materials, this cap provides both style and sun protection. The classic black color makes it versatile for various outfits. The adjustable strap ensures a comfortable fit. Elevate your accessory collection with our Classic Black Cap.",
-    price: "$24.99",
+    price: 24.99,
     tag: ["Other"],
   },
   {
@@ -136,7 +136,7 @@ const products: Product[] = [
     ],
     imageAlt: "Door Gym Pull Up Bar Chrome",
     description: "Enhance your upper body strength with our Door Gym Pull Up Bar in a sleek chrome finish. Easily installable on most standard door frames, this bar is perfect for at-home workouts. The sturdy construction ensures safety and stability during your pull-ups and other exercises. The chrome finish adds a touch of style to your home gym setup. Achieve your fitness goals conveniently with the Door Gym Pull Up Bar Chrome.",
-    price: "$34.99",
+    price: 34.99,
     tag: ["Fitness Equipment"],
   }, 
   {
@@ -150,7 +150,7 @@ const products: Product[] = [
     ],
     imageAlt: "Ground Parallel Bars 80cm",
     description: "Elevate your calisthenics training with our Ground Parallel Bars. These 80cm parallettes are designed for a wide range of calisthenics exercises, providing stability and durability. Perfect for building strength and mastering bodyweight movements. Upgrade your calisthenics routine with these high-quality parallel bars.",
-    price: "$69.99",
+    price: 69.99,
     tag: ["Fitness Equipment"],
   }, 
   {
@@ -163,7 +163,7 @@ const products: Product[] = [
     ],
     imageAlt: "Blank Black Shorts Pant",
     description: "Upgrade your athletic wardrobe with our Blank Black Shorts Pant. These versatile shorts offer comfort and style for your workouts and casual wear. Made from breathable and stretchable fabric, they provide flexibility during any activity. The classic black color ensures easy pairing with various tops. Elevate your sporty look with our Blank Black Shorts Pant.",
-    price: "$29.99",
+    price: 29.99,
     tag: ["Clothing", "Tops Wear"],
     size: ["S", "M", "L", "XL"],
   },
@@ -177,7 +177,7 @@ const products: Product[] = [
     ],
     imageAlt: "Black Hoodie",
     description: "Stay warm in style with our Black Hoodie. Made from high-quality and cozy material, this hoodie provides comfort and a trendy look. The classic black color ensures easy pairing with any outfit. Featuring a front zipper and a hood, it's perfect for casual outings or layering during colder days. Elevate your wardrobe with our Black Hoodie.",
-    price: "$39.99",
+    price: 39.99,
     tag: ["Clothing", "Tops Wear"],
     size: ["S", "M", "L", "XL"],
   },
@@ -193,7 +193,7 @@ const products: Product[] = [
     ],
     imageAlt: "Weight Vest 15kg",
     description: "Elevate your training with our Weight Vest 15kg. Designed for advanced resistance, this vest adds intensity to your workouts. The adjustable straps ensure a secure and comfortable fit. Ideal for challenging bodyweight exercises, cardio, and strength training routines.",
-    price: "$99.99",
+    price: 99.99,
     tag: ["Fitness Equipment"],
   },
   {
@@ -206,7 +206,7 @@ const products: Product[] = [
     ],
     imageAlt: "Long Sleeves Black T-Shirt",
     description: "Upgrade your wardrobe with our Long Sleeves Black T-Shirt. Made from soft and breathable cotton, this shirt provides both comfort and style. The long sleeves make it perfect for cooler days, and the classic black color ensures easy pairing with any bottoms. Elevate your casual look with our Long Sleeves Black T-Shirt.",
-    price: "$34.99",
+    price: 34.99,
     tag: ["Clothing", "Tops Wear"],
     size: ["S", "M", "L", "XL"],
   }
