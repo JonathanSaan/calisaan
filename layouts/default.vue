@@ -9,8 +9,8 @@
       </NuxtLink>
       <ul class="flex lg:mr-1 align-items items-center h-9">
         <li>
-          <form class="min-md:w-[30rem]">
-            <input type="text" placeholder="Search" class="outline-none border-b-2 border-gray-900 text-xl placeholder-gray-900 text-gray-900 h-9 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
+          <form @submit.prevent="handleSearch" class="min-md:w-[30rem]">
+            <input v-model="searchQuery" type="text" name="searchQuery" placeholder="Search" class="outline-none border-b-2 border-gray-900 text-xl placeholder-gray-900 text-gray-900 h-9 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
             <button type="submit" class="max-lg:ml-5 ml-6">
               <Icon name="carbon:search" color="black" size="23" title="Search" aria-hidden="true" />
             </button>
@@ -112,6 +112,11 @@ import { useCartStore } from "~/stores/cart";
 const cartStore = useCartStore();
 const isSidebarVisible = ref(false);
 const isModalVisible = ref(false);
+const searchQuery = ref("");
+
+const handleSearch = () => {
+  navigateTo({ path: "/search", query: { q: searchQuery.value } });
+};
 
 const handleModalClose = () => {
   clearCart();
