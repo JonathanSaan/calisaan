@@ -9,15 +9,19 @@
             class="max-lg:mx-auto max-sm:h-[38rem] max-md:h-[48rem] max-lg:h-[52rem] lg:min-h-[54rem] w-[40rem] pointer-events-none"
           />
           <div class="flex xl:flex-col lg:ml-0 md:ml-[5vw] max-xl:mt-5 lg:mr-8">
-            <NuxtImg
+            <button
               v-for="(image, index) in product.imageSrc"
               :key="index"
-              :src="image"
-              :alt="product.imageAlt"
               @click="() => { setActiveImageOrSelectSize(image, 'image'); setSelectedStyle(index, 'image'); }"
               :class="[{'border-2': true, 'border-black': selectedImageIndex === index, 'border-transparent': selectedImageIndex !== index}]"
-              class="max-lg:mr-5 max-xl:mr-6 xl:mr-1 max-lg:mb-3 mb-[1.8rem] lg:h-34 max-md:h-40 md:h-40 max-sm:h-32 lg:w-32 max-md:w-32 max-sm:w-24 rounded-md cursor-pointer"
-            />
+              class="max-lg:mr-5 max-xl:mr-6 xl:mr-1 max-lg:mb-3 mb-[1.8rem] rounded-md cursor-pointer"
+            >
+              <NuxtImg
+                :src="image"
+                :alt="product.imageAlt"
+                class="lg:h-34 max-md:h-40 md:h-40 max-sm:h-32 lg:w-32 max-md:w-32 max-sm:w-24 pointer-events-none rounded-md cursor-pointer"
+              />
+            </button>
           </div>
         </div>
 
@@ -28,7 +32,7 @@
           <div v-if="product.size" class="flex mt-1 flex-col">
             <label>
               <span class="font-semibold text-xl">Size: </span>
-              <span class="selected-value font-medium text-xl option-label">{{ selectedSize }}</span>
+              <span class="selected-value font-medium text-xl">{{ selectedSize }}</span>
             </label>
 		    
             <div class="mt-3 mb-5">
@@ -46,7 +50,7 @@
 		  
           <p class="text-2xl font-medium mt-2 text-gray-900">{{ product.description }}</p>
 		  
-          <button @click="() => { addToCart(product) }" class="mt-16 lg:mt-32 h-16 w-full uppercase bg-black hover:bg-black/90 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md outline-none">
+          <button @click="() => { addToCart(product) }" class="mt-16 lg:mt-32 h-16 w-full uppercase bg-black hover:bg-black/90 transition duration-150 ease-in-out text-white text-lg rounded-lg shadow-md">
             add to cart
           </button>
         </div>
