@@ -27,7 +27,7 @@
       </li>
     </ul>
     
-    <button class="my-14 mx-auto h-14 w-48 text-lg bg-black hover:bg-black/90 text-white rounded-lg shadow-md outline-none">
+    <button class="my-14 mx-auto h-14 w-48 text-lg bg-black hover:bg-black/90 text-white rounded-lg shadow-md">
       See more
     </button>
   </div>
