@@ -34,8 +34,8 @@
                 </div>
               </template>
               
-              <div v-if="cartStore.cart" class="mt-[-1rem] divide-y divide-gray">
-                <div v-for="product in cartStore.cart" :key="product.id" class="flex py-6">
+              <div v-if="cartStore.cart" class="mt-[-1rem] max-h-[74vh] sm:max-h-[72vh] overflow-auto divide-y divide-gray">
+                <div v-for="product in cartStore.cart" :key="product.id" class="flex mr-2 py-6">
                   <img :src="product.imageSrc[0]" :alt="product.imageAlt" class="h-40 mr-[1.5rem]" />
                   <div class="flex flex-col">
                     <h2 class="font-medium">{{ product.name }}</h2>
@@ -48,7 +48,7 @@
                       <button @click="() => { addToCart(product) }" class="rounded w-9 bg-black hover:bg-black/90 text-white">+</button>
                     </div>
                   </div>
-                  <button @click="() => { removeItem(product) }" class="mt-auto mb-3 ml-auto border-b-2 border-black/75 px-1 h-7">Remove</button>
+                  <button @click="() => { removeItem(product) }" class="border-b-2 border-black/75 mt-auto mb-3 ml-auto px-1 h-7">Remove</button>
                 </div>
               </div>
               <h2 v-if="cartStore.cart.length === 0" class="mt-5 text-lg text-center">Your cart is empty</h2>
