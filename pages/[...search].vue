@@ -2,10 +2,18 @@
   <div class="flex max-sm:flex-col">
     <aside class="mt-6 pt-2 px-8 border-r-2 border-gray w-[21rem]">
       <h3 class="mb-3 text-lg font-medium">Category</h3>
-      <UCheckbox v-for="(label, index) in categoryLabels" :key="index" :label="label" class="ml-3 mb-2" :ui="{ color: 'text-black', base: 'cursor-pointer' }" />
+      <UCheckbox v-for="(label, index) in categoryLabels" :key="index" class="ml-3 mb-2" :ui="{ color: 'text-black', base: 'cursor-pointer' }">
+        <template #label>
+          <span class="cursor-pointer pl-4 ml-[-1rem]">{{ label }}</span>
+        </template>
+      </UCheckbox>
       
       <h3 class="border-t-2 border-gray my-3 pt-3 text-lg font-medium">Price:</h3>
-      <UCheckbox v-for="(label, index) in priceLabels" :key="index" :label="label" class="ml-3 mb-2" :ui="{ color: 'text-black', base: 'cursor-pointer' }" />
+      <UCheckbox v-for="(label, index) in priceLabels" :key="index" class="ml-3 mb-2" :ui="{ color: 'text-black', base: 'cursor-pointer' }">
+        <template #label>
+          <span class="cursor-pointer pl-4 ml-[-1rem]">{{ label }}</span>
+        </template>
+      </UCheckbox>
     </aside>
     
     <main class="flex flex-col mt-12 mb-8 mx-auto max-sm:mx-[1rem] max-md:mx-[3rem] max-lg:mx-[6rem] p-0 lg:p-5 lg:px-24 lg:py-0 lg:w-full">
