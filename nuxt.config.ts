@@ -1,6 +1,5 @@
 export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@nuxt/image", "@pinia/nuxt"],
-  target: "static",
   build: {
     extractCSS: true,
     terser: {
