@@ -46,15 +46,18 @@
 </template>
 
 <script setup>
-const { q } = useRoute().query;
+const q = ref(useRoute().query.q);
 const categoryLabels = ["Fitness Equipment", "Clothing", "Tops Wear", "Bottom Wear", "Other"];
 const priceLabels = ["Under $50.00", "$50.00 - $100.00", "$100.00 - $200.00"];
 
-const { data: allProducts, pending } = await useFetch("/api/search.get", {
-  query: { q }
-});
+const { data: allProducts, refresh } = await useAsyncData("allProducts", () => $fetch("/api/search.get", {
+  query: q.value
+}), {
+    watch: [q]
+  }
+);
 
 useHead({
-  title: `Search ${q ? `result for: ${q}` : "Result "} | CaliSaan`,
+  title: `Search ${q.value ? `result for: ${q.value}` : "Result "} | CaliSaan`,
 });
 </script>
