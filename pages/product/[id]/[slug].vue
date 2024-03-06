@@ -1,6 +1,6 @@
 <template>
   <div class="flex lg:justify-center">
-    <div v-if="!pending && product" class="flex flex-col">
+    <div v-if="!pending && !error" class="flex flex-col">
       <div class="flex mx-auto mb-28 lg:mb-[17rem] xl:mb-20 mt-5 lg:mt-8 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[86rem] lg:h-[54rem]">
         <div class="flex flex-col xl:flex-row-reverse">
           <NuxtImg
@@ -66,21 +66,21 @@
               </div>
               <div class="mt-4 flex justify-between">
                 <div>
-                  <h3 class="text-sm text-gray-700">
+                  <h3 class="font-medium text-gray-900">
                     <span aria-hidden="true" class="inset-0" />
                     {{ item.name }}
                   </h3>
                 </div>
-                <p class="text-sm font-medium text-gray-900">${{ item.price }}</p>
+                <p class="font-medium text-gray-900">${{ item.price }}</p>
               </div>
             </NuxtLink>
           </div>
         </UCarousel>
       </div>
     </div>
-
+    
     <div v-if="pending">
-      <p>loading...</p>
+      <ProductSkeleton />
     </div>
   </div>
 </template>
@@ -91,7 +91,7 @@ import { useCartStore } from "~/stores/cart";
 const cartStore = useCartStore();
 
 const { id, slug } = useRoute().params;
-const { data: product, pending } = await useFetch(`/api/product/${id}/${slug}`);
+const { data: product, pending, error } = await useFetch(`/api/product/${id}/${slug}`);
 
 const activeImage = ref(product.value.imageSrc[0]);
 const selectedImageIndex = ref(0);
