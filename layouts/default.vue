@@ -1,29 +1,20 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <header class="shadow-sm flex justify-between items-center max-lg:pr-6 max-lg:pl-5 px-8 max-lg:h-24 h-24 text-center">
+    <header class="shadow-sm flex justify-between items-center max-lg:pr-8 max-lg:pl-5 px-8 pr-10 max-lg:h-24 h-24 text-center">
       <NuxtLink to="/">
         <picture>
           <source media="(max-width: 768px)" srcset="~/assets/images/logoMobile.png" width="48" height="30" />
           <img src="~/assets/images/logo.png" alt="logo" width="82" />
         </picture>
       </NuxtLink>
-      <ul class="flex lg:mr-1 align-items items-center h-9">
-        <li>
-          <form @submit.prevent="handleSearch" class="min-md:w-[30rem]">
-            <input v-model="searchQuery" type="text" name="searchQuery" placeholder="Search" class="outline-none border-b-2 border-gray-900 text-xl placeholder-gray-900 text-gray-900 h-9 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
-            <button type="submit" class="max-lg:ml-5 ml-6">
-              <Icon name="carbon:search" color="black" size="23" title="Search" aria-hidden="true" />
-            </button>
-          </form>
-        </li>
-        <li class="max-sm:ml-1 max-md:ml-4 ml-5">
-          <UChip :text="cartStore.cart.length" :show="cartStore.cart.length > 0" :ui="{ background: 'bg-black/60' }" size="2xl">
-            <button label="Add to cart" @click="isSidebarVisible = true">
-              <Icon name="clarity:shopping-cart-solid" color="black" size="23" title="Add to cart" aria-hidden="true" />
-            </button>
-          </UChip>
-
-          <USlideover v-model="isSidebarVisible" :prevent-close="isModalVisible" :ui="{ background: 'bg-white', overlay: { background: 'bg-black/65' } }">
+      <UChip :text="cartStore.cart.length" :show="cartStore.cart.length > 0" :ui="{ background: 'bg-black/60' }" size="2xl">
+        <button label="Add to cart" @click="isSidebarVisible = true">
+          <Icon name="clarity:shopping-cart-solid" color="black" size="23" title="Add to cart" aria-hidden="true" />
+        </button>
+      </UChip>
+    </header>
+    
+    <USlideover v-model="isSidebarVisible" :prevent-close="isModalVisible" :ui="{ background: 'bg-white', overlay: { background: 'bg-black/65' } }">
             <UCard class="flex flex-col flex-1 text-black" :ui="{ background: 'bg-white', body: { base: 'flex-1', padding: 'p-0 sm:p-0' }, ring: '', divide: 'divide-y divide-gray-700' }">
               <template #header>
                 <div class="flex items-center justify-between">
@@ -35,7 +26,7 @@
               </template>
               
               <h2 v-if="cartStore.cart.length === 0" class="mt-6 text-lg text-center">Your cart is empty</h2>
-              <div v-if="cartStore.cart" class="px-5 h-[76svh] lg:h-[72svh] visible overflow-auto divide-y divide-gray">
+              <div v-if="cartStore.cart" class="px-5 h-[76svh] lg:h-[74svh] visible overflow-auto divide-y divide-gray">
                 <div v-for="product in cartStore.cart" :key="product.id" class="flex mr-2 py-6">
                   <NuxtLink :to="`/product/${product.id}/${product.slug}`">
                     <img :src="product.imageSrc[0]" :alt="product.imageAlt" class="h-40 mr-[1.5rem]" />
@@ -95,9 +86,6 @@
               </div>
             </UCard>
           </UModal>
-        </li>
-      </ul>
-    </header>
 
     <NuxtLoadingIndicator :throttle=0 color="black" />
     <div class="flex-1">
@@ -116,11 +104,6 @@ import { useCartStore } from "~/stores/cart";
 const cartStore = useCartStore();
 const isSidebarVisible = ref(false);
 const isModalVisible = ref(false);
-const searchQuery = ref("");
-
-const handleSearch = () => {
-  navigateTo({ path: "/search", query: { q: searchQuery.value } });
-};
 
 const handleModalClose = () => {
   clearCart();
