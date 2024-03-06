@@ -24,7 +24,7 @@
           </UChip>
 
           <USlideover v-model="isSidebarVisible" :prevent-close="isModalVisible" :ui="{ background: 'bg-white', overlay: { background: 'bg-black/65' } }">
-            <UCard class="flex flex-col flex-1 text-black" :ui="{ background: 'bg-white', body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-700' }">
+            <UCard class="flex flex-col flex-1 text-black" :ui="{ background: 'bg-white', body: { base: 'flex-1', padding: 'p-0 sm:p-0' }, ring: '', divide: 'divide-y divide-gray-700' }">
               <template #header>
                 <div class="flex items-center justify-between">
                   <h3 class="text-2xl leading-6">Cart</h3>
@@ -34,11 +34,16 @@
                 </div>
               </template>
               
-              <div v-if="cartStore.cart" class="mt-[-1rem] max-h-[74vh] sm:max-h-[72vh] overflow-auto divide-y divide-gray">
+              <h2 v-if="cartStore.cart.length === 0" class="mt-6 text-lg text-center">Your cart is empty</h2>
+              <div v-if="cartStore.cart" class="px-5 h-[76svh] lg:h-[72svh] visible overflow-auto divide-y divide-gray">
                 <div v-for="product in cartStore.cart" :key="product.id" class="flex mr-2 py-6">
-                  <img :src="product.imageSrc[0]" :alt="product.imageAlt" class="h-40 mr-[1.5rem]" />
+                  <NuxtLink :to="`/product/${product.id}/${product.slug}`">
+                    <img :src="product.imageSrc[0]" :alt="product.imageAlt" class="h-40 mr-[1.5rem]" />
+                  </NuxtLink>
                   <div class="flex flex-col">
-                    <h2 class="font-medium">{{ product.name }}</h2>
+                    <NuxtLink :to="`/product/${product.id}/${product.slug}`">
+                      <h2 class="font-medium">{{ product.name }}</h2>
+                    </NuxtLink>
                     <h3>{{ product.size }}</h3>
                     <h4 class="font-medium">${{ product.price }}</h4>
                     
@@ -51,7 +56,6 @@
                   <button @click="() => { removeItem(product) }" class="border-b-2 border-black/75 mt-auto mb-3 ml-auto px-1 h-7">Remove</button>
                 </div>
               </div>
-              <h2 v-if="cartStore.cart.length === 0" class="mt-5 text-lg text-center">Your cart is empty</h2>
               
               <template #footer v-if="cartStore.cart.length !== 0">
                 <div class="py-2">
