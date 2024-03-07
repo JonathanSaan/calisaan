@@ -1,75 +1,23 @@
-# Nuxt 3 Minimal Starter
+<h1 align="center">Screenshots</h1>
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Home
+![img](https://github.com/JonathanSaan/calisaan/blob/066b5eb917c8bf2b93a95619f9fbcf5a286e031e/screenshots/screenshot1.png)
 
-## Setup
+## Product
+![img](https://github.com/JonathanSaan/calisaan/blob/066b5eb917c8bf2b93a95619f9fbcf5a286e031e/screenshots/screenshot2.png)
 
-Make sure to install the dependencies:
+## Cart Details
+![img](https://github.com/JonathanSaan/calisaan/blob/066b5eb917c8bf2b93a95619f9fbcf5a286e031e/screenshots/screenshot3.png)
 
-```bash
-# npm
-npm install
+## Purchase Successful
+![img](https://github.com/JonathanSaan/calisaan/blob/066b5eb917c8bf2b93a95619f9fbcf5a286e031e/screenshots/screenshot4.png)
 
-# pnpm
-pnpm install
+## Demo
+🌑 [Live Demo](https://calisaan.vercel.app/)
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Built with
+* NuxtJs
+* Nuxt UI
+* Tailwind
+* Pinia
+* TypeScript
