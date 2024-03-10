@@ -106,6 +106,10 @@ const cartStore = useCartStore();
 const isSidebarVisible = ref(false);
 const isModalVisible = ref(false);
 
+onMounted(() => {
+  cartStore.initializeCartFromLocalStorage();
+});
+
 const handleModalClose = () => {
   clearCart();
   isModalVisible.value = false;
