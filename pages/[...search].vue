@@ -39,10 +39,8 @@
       </ul>
       
       <SearchSkeleton v-if="pending" />
-		
-      <div v-if="allProducts.length === 0" class="mt-auto h-full w-full">
-        <p class="text-lg text-center font-semibold">No results</p>
-      </div>
+      
+      <p v-if="allProducts.length === 0" class="mt-9 text-2xl text-center font-semibold">No results</p>
     </main>
   </div>
 </template>
