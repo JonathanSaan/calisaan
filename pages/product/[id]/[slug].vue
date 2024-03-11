@@ -118,11 +118,10 @@ const setSelectedStyle = (index, type) => {
   selectedSizeIndex.value = index;
 };
 
-useHead({
+useSeoMeta({
   title: `${product.value ? product.value.name + " | " : ""}CaliSaan`,
-  meta: [
-    { name: "description", content: `${product.value ? product.value.description : "Discover high-quality products at CaliSaan. Explore our collection for the latest trends and timeless classics."}` },
-    { name: "ogDescription", content: `${product.value ? product.value.description : "Discover high-quality products at CaliSaan. Explore our collection for the latest trends and timeless classics."}` },
-  ]
+  ogTitle: `${product.value ? product.value.name + " | " : ""}CaliSaan`,
+  description: `${product.value ? `Product: ${product.value.name} - ${product.value.description}` : "Discover high-quality products at CaliSaan. Explore our collection for the latest trends and timeless classics."}`,
+  ogDescription: `${product.value ? `Product: ${product.value.name} - ${product.value.description}` : "Discover high-quality products at CaliSaan. Explore our collection for the latest trends and timeless classics."}`
 });
 </script>
