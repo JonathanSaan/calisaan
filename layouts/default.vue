@@ -7,9 +7,16 @@
           <img src="~/assets/images/logo.png" alt="logo" width="82" />
         </picture>
       </NuxtLink>
+      
+      <form @submit.prevent="doSearch" class="max-sm:mr-1 max-md:mr-4 mr-5 ml-auto min-md:w-[30rem]">
+        <input v-model="searchQuery" type="text" name="searchQuery" placeholder="Search" @keydown.enter="doSearch" class="outline-none border-b-2 border-gray-900 text-xl placeholder-gray-900 text-gray-900 pb-1 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
+        <button type="submit" class="mt-1 max-lg:ml-5 ml-6">
+          <Icon name="carbon:search" color="black" size="23" title="Search" aria-hidden="true" />
+        </button>
+      </form>
       <UChip :text="cartStore.cart.length" :show="cartStore.cart.length > 0" :ui="{ background: 'bg-black/60' }" size="2xl">
         <button label="Add to cart" @click="isSidebarVisible = true">
-          <Icon name="clarity:shopping-cart-solid" color="black" size="23" title="Add to cart" aria-hidden="true" />
+          <Icon name="clarity:shopping-cart-solid" color="black" size="25" title="Add to cart" aria-hidden="true" />
         </button>
       </UChip>
     </header>
@@ -19,7 +26,7 @@
         <template #header>
           <div class="flex items-center justify-between">
             <h3 class="text-2xl leading-6">Cart</h3>
-            <button label="Close" class="my-1 ml-auto" @click="isSidebarVisible = false">
+            <button label="Close" class="my-1" @click="isSidebarVisible = false">
               <Icon name="i-heroicons-x-mark-20-solid" color="black" size="25" title="Close sidebar" aria-hidden="true" />
             </button>
           </div>
@@ -101,7 +108,9 @@
 
 <script setup lang="ts">
 import { useCartStore } from "~/stores/cart";
+import useSearch from "~/utils/searchUtils";
 
+const { searchQuery, doSearch } = useSearch();
 const cartStore = useCartStore();
 const isSidebarVisible = ref(false);
 const isModalVisible = ref(false);

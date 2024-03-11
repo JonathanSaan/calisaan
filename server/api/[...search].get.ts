@@ -1,6 +1,7 @@
 import products from "../../data/products";
 
 export default defineEventHandler(async (event) => {
+  const query = getQuery<{ q: string | undefined }>(event);
   const allProducts = products.map(({ id, name, slug, imageSrc, imageAlt, price }) => ({
     id,
     name,
@@ -8,7 +9,7 @@ export default defineEventHandler(async (event) => {
     imageSrc: imageSrc[0],
     imageAlt,
     price,
-  }));
+  })).filter((product) => product.name.toLowerCase().includes(query.q?.toLowerCase() || ""));
   
-  return allProducts.slice(0, 6);;
+  return allProducts;
 })
