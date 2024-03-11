@@ -38,7 +38,7 @@
         </li>
       </ul>
       
-      <SearchSkeleton  v-if="pending" />
+      <SearchSkeleton v-if="pending" />
 		
       <div v-if="allProducts.length === 0" class="mt-auto h-full w-full">
         <p class="text-lg text-center font-semibold">No results</p>
@@ -58,7 +58,10 @@ const { data: allProducts, pending, error } = await useFetch("/api/search.get", 
   query: { q: search }
 });
 
-useHead({
-  title: `Search ${search.value ? `result for: ${search.value}` : "Result "} | CaliSaan`,
+useSeoMeta({
+  title: computed(() => `Search ${search.value ? `result for: ${search.value}` : "Result "} | CaliSaan`),
+  ogTitle: computed(() => `Search ${search.value ? `result for: ${search.value}` : "Result "} | CaliSaan`),
+  description: computed(() => "Explore a diverse range of high-quality products on our search page. Find exactly what you're looking for, from the latest trends to unbeatable prices. Your one-stop destination for an extensive selection. Start exploring now!"),
+  ogDescription: computed(() => "Explore a diverse range of high-quality products on our search page. Find exactly what you're looking for, from the latest trends to unbeatable prices. Your one-stop destination for an extensive selection. Start exploring now!"),
 });
 </script>
