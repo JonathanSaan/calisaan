@@ -46,9 +46,9 @@
               <h3>{{ product.size }}</h3>
               <h4 class="font-medium">${{ product.price }}</h4>
                     
-              <div class="flex mt-auto mb-3 text-center">
+              <div class="flex mt-auto mb-3 h-8 font-semibold">
                 <button @click="() => { decrementItemQuantity(product) }" class="rounded w-9 bg-black hover:bg-black/90 text-white">-</button>
-                  <span class="rounded font-semibold text-gray-900 mx-2 py-1 w-12 bg-black/15">{{ product.quantity }}</span>
+                  <span class="flex items-center justify-center rounded text-gray-900 mx-2 px-4 min-w-12 w-auto bg-black/15">{{ product.quantity }}</span>
                 <button @click="() => { addToCart(product) }" class="rounded w-9 bg-black hover:bg-black/90 text-white">+</button>
               </div>
             </div>
