@@ -1,38 +1,42 @@
 <template>
   <div class="flex max-sm:flex-col">
-    <aside class="mt-6 pt-2 px-8 border-r-2 border-gray w-[21rem]">
-      <h3 class="mb-3 text-lg font-medium">Category</h3>
-      <UCheckbox v-for="(label, index) in categoryLabels" :key="index" class="ml-3 mb-2" :ui="{ color: 'text-black', base: 'cursor-pointer' }">
-        <template #label>
-          <span class="cursor-pointer pl-4 ml-[-1rem]">{{ label }}</span>
-        </template>
-      </UCheckbox>
-
-      <h3 class="border-t-2 border-gray my-3 pt-3 text-lg font-medium">Price:</h3>
-      <UCheckbox v-for="(label, index) in priceLabels" :key="index" class="ml-3 mb-2" :ui="{ color: 'text-black', base: 'cursor-pointer' }">
-        <template #label>
-          <span class="cursor-pointer pl-4 ml-[-1rem]">{{ label }}</span>
-        </template>
-      </UCheckbox>
+    <aside class="max-sm:hidden mt-6 pt-2 px-4 lg:px-8 border-r-2 border-gray sm:w-[27rem] lg:w-[21rem]">
+      <Filters />
     </aside>
+    
+    <USlideover v-model="isSidebarVisible" side="left" class="sm:hidden" :ui="{ background: 'bg-white', overlay: { background: 'bg-black/60' } }">
+      <UCard class="flex flex-col flex-1 text-black sm:hidden" :ui="{ background: 'bg-white', body: { base: 'flex-1', padding: 'py-4' }, ring: '', divide: 'divide-y divide-gray' }">
+        <template #header>
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl leading-6">Filters</h3>
+            <button label="Close" class="my-1" @click="isSidebarVisible = false">
+              <Icon name="i-heroicons-x-mark-20-solid" color="black" size="25" title="Close sidebar" aria-hidden="true" />
+            </button>
+          </div>
+        </template>
 
-    <main class="flex flex-col mt-12 mb-8 mx-auto max-sm:mx-[1rem] max-md:mx-[3rem] max-lg:mx-[6rem] p-0 lg:p-5 lg:px-24 lg:py-0 sm:min-w-[30rem] lg:w-full">
+        <Filters />
+      </UCard>
+    </USlideover>
+    
+    <main class="flex flex-col mt-6 sm:mt-12 mb-8 mx-auto max-sm:mx-[1rem] max-md:mx-[3rem] max-lg:mx-[6rem] p-0 lg:p-5 lg:px-24 lg:py-0 sm:min-w-[30rem] lg:w-full">
+      <button @click="isSidebarVisible = true" class="sm:hidden ml-auto h-14 w-48 text-lg bg-black hover:bg-black/90 text-white rounded-lg shadow-md">Filters</button>
       <h2 class="mr-auto text-lg font-semibold">{{ search ? `Results found for: ${search}` : "All Products" }}</h2>
 
       <ul v-if="!pending && !error" class="mt-8 relative grid grid-cols-2 max-sm:grid-cols-2 max-md:grid-cols-3 md:grid-cols-3 max-lg:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-7 items-start">
         <li v-for="product in allProducts" :key="product.id" class="flex group border-2 border-gray">
-          <NuxtLink :to="`/product/${product.id}/${product.slug}`" class="p-5">
+          <NuxtLink :to="`/product/${product.id}/${product.slug}`" class="p-5 w-full">
             <div class="rounded-md bg-gray-200 group-hover:opacity-75">
               <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
             </div>
             <div class="mt-4 flex justify-between">
               <div>
-                <h3 class="text-sm text-gray-700">
+                <h3 class="font-medium text-gray-900">
                   <span aria-hidden="true" class="inset-0" />
                   {{ product.name }}
                 </h3>
               </div>
-              <p class="text-sm font-medium text-gray-900">${{ product.price }}</p>
+              <p class="font-medium text-gray-900">${{ product.price }}</p>
             </div>
           </NuxtLink>
         </li>
@@ -48,9 +52,7 @@
 <script setup>
 import useSearch from "~/utils/searchUtils";
 const { search, doSearch } = useSearch();
-
-const categoryLabels = ["Fitness Equipment", "Clothing", "Tops Wear", "Bottom Wear", "Other"];
-const priceLabels = ["Under $50.00", "$50.00 - $100.00", "$100.00 - $200.00"];
+const isSidebarVisible = ref(false)
 
 const { data: allProducts, pending, error } = await useFetch("/api/search.get", {
   query: { q: search }
