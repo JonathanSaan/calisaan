@@ -3,7 +3,6 @@ import products from "../../data/products";
 export default defineEventHandler(async (event) => {
   const query = getQuery<{ q: string | undefined, category: string | undefined, price: string | undefined }>(event);
   const priceLabels = ["Under $30.00", "$30.00 - $70.00", "$70.00 - $100.00"];
-  console.log(query)
   
   const allProducts = products.map(({ id, name, slug, imageSrc, imageAlt, price, tag }) => ({
     id,
