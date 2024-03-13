@@ -21,7 +21,7 @@
     
     <main class="flex flex-col mt-6 sm:mt-12 mb-8 mx-auto max-sm:mx-[1rem] max-md:mx-[3rem] max-lg:mx-[6rem] p-0 lg:p-5 lg:px-24 lg:py-0 sm:min-w-[30rem] lg:w-full">
       <button @click="isSidebarVisible = true" class="sm:hidden ml-auto h-14 w-48 text-lg bg-black hover:bg-black/90 text-white rounded-lg shadow-md">Filters</button>
-      <h2 class="mr-auto text-lg font-semibold">{{ search ? `Results found for: ${search}` : "All Products" }}</h2>
+      <h2 class="mr-auto text-lg font-semibold">{{ q ? `Results found for: ${q}` : "All Products" }}</h2>
 
       <ul v-if="!pending && !error" class="mt-8 relative grid grid-cols-2 max-sm:grid-cols-2 max-md:grid-cols-3 md:grid-cols-3 max-lg:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-7 items-start">
         <li v-for="product in allProducts" :key="product.id" class="flex group border-2 border-gray">
@@ -51,16 +51,19 @@
 
 <script setup>
 import useSearch from "~/utils/searchUtils";
-const { search, doSearch } = useSearch();
-const isSidebarVisible = ref(false)
+import useFilter from "~/utils/filterUtils";
 
-const { data: allProducts, pending, error } = await useFetch("/api/search.get", {
-  query: { q: search }
+const { q, doSearch } = useSearch();
+const { category, price } = useFilter();
+const isSidebarVisible = ref(false);
+
+const { data: allProducts, refresh, pending, error } = await useFetch("/api/search.get", {
+  query: { q, category, price }
 });
 
 useSeoMeta({
-  title: computed(() => `Search ${search.value ? `result for: ${search.value}` : "Result "} | CaliSaan`),
-  ogTitle: computed(() => `Search ${search.value ? `result for: ${search.value}` : "Result "} | CaliSaan`),
+  title: computed(() => `Search ${q.value ? `result for: ${q.value}` : "Result "} | CaliSaan`),
+  ogTitle: computed(() => `Search ${q.value ? `result for: ${q.value}` : "Result "} | CaliSaan`),
   description: computed(() => "Explore a diverse range of high-quality products on our search page. Find exactly what you're looking for, from the latest trends to unbeatable prices. Your one-stop destination for an extensive selection. Start exploring now!"),
   ogDescription: computed(() => "Explore a diverse range of high-quality products on our search page. Find exactly what you're looking for, from the latest trends to unbeatable prices. Your one-stop destination for an extensive selection. Start exploring now!"),
 });

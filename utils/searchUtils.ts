@@ -6,22 +6,22 @@ const useSearch = () => {
   const router = useRouter();
   const searchQuery = ref("");
   
-  const search = computed({
+  const q = computed({
     get: () => {
       return route.query.q
     },
     set: (val) => {
       router.push({ path: "/search", query: { q: val } })
     }
-  })
+  });
 
   const doSearch = () => {
-    search.value = searchQuery.value;
-  }
+    q.value = searchQuery.value;
+  };
 
   return {
     searchQuery,
-    search,
+    q,
     doSearch,
   };
 };
