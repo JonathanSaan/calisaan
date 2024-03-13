@@ -14,7 +14,7 @@ const useFilter = () => {
     set: (val) => {
       router.push({ path: route.path, query: { category: val } })
     }
-  });
+  })
   
   const price = computed({
     get: () => {
@@ -23,10 +23,10 @@ const useFilter = () => {
     set: (val) => {
       router.push({ path: route.path, query: { price: val } })
     }
-  });
+  })
 
   const applyFilters = () => {
-    let params = { ...route.query };
+    const params = { ...route.query };
 
     if (selectedCategory.value) {
       params.category = selectedCategory.value;
