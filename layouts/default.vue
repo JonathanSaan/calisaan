@@ -9,7 +9,7 @@
       </NuxtLink>
       
       <form @submit.prevent="doSearch" class="max-sm:mr-1 max-md:mr-4 mr-5 ml-auto min-md:w-[30rem]">
-        <input v-model="searchQuery" type="text" name="searchQuery" placeholder="Search" @keydown.enter="doSearch" class="outline-none border-b-2 border-gray-900 text-xl placeholder-gray-900 text-gray-900 pb-1 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
+        <input v-model="searchQuery" type="text" name="searchQuery" placeholder="Search" class="outline-none border-b-2 border-gray-900 text-xl placeholder-gray-900 text-gray-900 pb-1 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
         <button type="submit" class="mt-1 max-lg:ml-5 ml-6">
           <Icon name="carbon:search" color="black" size="23" title="Search" aria-hidden="true" />
         </button>
