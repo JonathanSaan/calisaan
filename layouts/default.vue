@@ -10,12 +10,12 @@
       
       <form @submit.prevent="doSearch" class="max-sm:mr-1 max-md:mr-4 mr-5 ml-auto min-md:w-[30rem]">
         <input v-model="searchQuery" type="text" name="searchQuery" placeholder="Search" class="outline-none border-b-2 border-gray-900 text-xl placeholder-gray-900 text-gray-900 pb-1 max-sm:w-[70%] max-md:w-[20rem] max-lg:w-[25rem] w-[30rem]">
-        <button type="submit" title="Search" aria-hidden="true" class="mt-1 max-lg:ml-5 ml-6">
+        <button type="submit" title="Search" class="mt-1 max-lg:ml-5 ml-6">
           <Icon name="carbon:search" color="black" size="23" />
         </button>
       </form>
       <UChip :text="cartStore.cart.length" :show="cartStore.cart.length > 0" :ui="{ background: 'bg-black/60' }" size="2xl">
-        <button title="Add to cart" aria-hidden="true" @click="isSidebarVisible = true">
+        <button title="Add to cart" @click="isSidebarVisible = true">
           <Icon name="clarity:shopping-cart-solid" color="black" size="25" />
         </button>
       </UChip>
@@ -26,7 +26,7 @@
         <template #header>
           <div class="flex items-center justify-between">
             <h3 class="text-2xl leading-6">Cart</h3>
-            <button title="Close" aria-hidden="true" class="my-1" @click="isSidebarVisible = false">
+            <button title="Close" class="my-1" @click="isSidebarVisible = false">
               <Icon name="i-heroicons-x-mark-20-solid" color="black" size="25" />
             </button>
           </div>
@@ -79,7 +79,7 @@
               Purchase Successful
             </h3>
                   
-            <button title="Close" aria-hidden="true" class="my-1 ml-auto" @click="handleModalClose">
+            <button title="Close" class="my-1 ml-auto" @click="handleModalClose">
               <Icon name="i-heroicons-x-mark-20-solid" color="black" size="25" />
             </button>
           </div>
