@@ -12,7 +12,7 @@
       <li v-for="product in allProducts" :key="product.id" class="flex group border-2 border-gray max-sm:min-h-[63vw]">
         <NuxtLink :to="`/product/${product.id}/${product.slug}`" class="p-5 w-full">
           <div class="rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
-            <NuxtImg :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            <NuxtImg format="webp" :src="product.imageSrc" :alt="product.imageAlt" loading="lazy" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
           </div>
           <div class="mt-4 flex justify-between">
             <div>

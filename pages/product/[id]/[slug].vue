@@ -4,6 +4,7 @@
       <div class="flex mx-auto mb-28 lg:mb-[17rem] xl:mb-20 mt-5 lg:mt-8 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[86rem] lg:h-[54rem]">
         <div class="flex flex-col xl:flex-row-reverse">
           <NuxtImg
+            format="webp"
             :src="activeImage"
             :alt="product.imageAlt"
             class="max-lg:mx-auto max-sm:h-[38rem] max-md:h-[48rem] max-lg:h-[52rem] lg:min-h-[54rem] w-[40rem] pointer-events-none"
@@ -17,6 +18,7 @@
               class="max-lg:mr-5 max-xl:mr-6 xl:mr-1 max-lg:mb-3 mb-[1.8rem] rounded-md cursor-pointer"
             >
               <NuxtImg
+                format="webp"
                 :src="image"
                 :alt="product.imageAlt"
                 class="lg:h-34 max-md:h-40 md:h-40 max-sm:h-32 lg:w-32 max-md:w-32 max-sm:w-24 pointer-events-none rounded-md cursor-pointer"
@@ -62,7 +64,7 @@
           <div :key="item.id" class="flex group max-lg:h-[25rem] max-lg:ml-5 lg:mr-5 border-2 border-gray" draggable="false">
             <NuxtLink :to="`/product/${item.id}/${item.slug}`" class="p-5">
               <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 max-md:h-80 min-h-72 xl:h-80 min-w-[15rem]">
-                <NuxtImg :src="item.imageSrc" :alt="item.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
+                <NuxtImg format="webp" :src="item.imageSrc" :alt="item.imageAlt" loading="lazy" class="h-full w-full object-cover object-center" />
               </div>
               <div class="mt-4 flex justify-between">
                 <div>
