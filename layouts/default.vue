@@ -3,8 +3,8 @@
     <header class="shadow-sm flex justify-between items-center max-lg:pr-8 max-lg:pl-5 px-8 pr-10 max-lg:h-24 h-24 text-center">
       <NuxtLink to="/">
         <picture>
-          <source media="(max-width: 768px)" srcset="~/assets/images/logoMobile.png" width="48" height="30" />
-          <img src="~/assets/images/logo.png" alt="logo" width="82" />
+          <source media="(max-width: 768px)" srcset="~/assets/images/logoMobile.png" height="30" width="48" />
+          <img src="~/assets/images/logo.png" alt="logo" height="70" width="82" />
         </picture>
       </NuxtLink>
       
