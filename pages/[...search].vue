@@ -53,11 +53,11 @@
 import useSearch from "~/utils/searchUtils";
 import useFilter from "~/utils/filterUtils";
 
-const { q, doSearch } = useSearch();
+const { q } = useSearch();
 const { category, price } = useFilter();
 const isSidebarVisible = ref(false);
 
-const { data: allProducts, refresh, pending, error } = await useFetch("/api/search.get", {
+const { data: allProducts, pending, error } = await useFetch("/api/search.get", {
   query: { q, category, price }
 });
 
