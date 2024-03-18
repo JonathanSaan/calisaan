@@ -30,14 +30,14 @@ const handleCheckboxChange = (event, value, type) => {
     return selectedCategory.value = event.target.checked ? value : null;
   } 
   selectedPrice.value = event.target.checked ? value : null;
-}
+};
 
 const isChecked = (label, type) => {
   if (type === "category") {
     return selectedCategory.value === label;
   }
   selectedPrice.value === label;
-}
+};
 
 watchEffect(() => {
   applyFilters();
