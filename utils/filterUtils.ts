@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const useFilter = () => {
@@ -42,7 +42,7 @@ const useFilter = () => {
     
     category.value = selectedCategory.value;
     price.value = selectedPrice.value;
-    router.push({ path: route.path, query: params });
+    router.replace({ path: route.path, query: params });
   };
 
   return {
