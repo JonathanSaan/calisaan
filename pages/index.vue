@@ -38,5 +38,7 @@
 <script setup>
 import banner from "~/assets/images/banner.webp";
 
-const { data: allProducts, pending, error } = await useFetch("/api/getAllProducts");
+const { data: allProducts, pending, error } = await useFetch("/api/getAllProducts", {
+  server: false,
+});
 </script>
