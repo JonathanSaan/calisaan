@@ -1,8 +1,9 @@
 import { ref, computed } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const useFilter = () => {
   const route = useRoute();
+  const router = useRouter();
   const selectedCategory = ref(route.query.category || "");
   const selectedPrice = ref(route.query.price || "");
 
@@ -11,7 +12,7 @@ const useFilter = () => {
       return route.query.category;
     },
     set: (val) => {
-      navigateTo({ path: route.path, query: { category: val } });
+      router.push({ path: route.path, query: { category: val } });
     },
   });
 
@@ -20,7 +21,7 @@ const useFilter = () => {
       return route.query.price;
     },
     set: (val) => {
-      navigateTo({ path: route.path, query: { price: val } });
+      router.push({ path: route.path, query: { price: val } });
     },
   });
 
@@ -43,10 +44,10 @@ const useFilter = () => {
     price.value = selectedPrice.value;
     
     if (route.path !== "/search") {
-      return navigateTo({ path: route.path });
+      return router.push({ path: route.path });
     }
     
-    navigateTo({ path: route.path, query: params });
+    router.push({ path: route.path, query: params });
   };
 
   return {

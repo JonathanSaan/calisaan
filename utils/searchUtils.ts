@@ -1,8 +1,9 @@
 import { ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const useSearch = () => {
   const route = useRoute();
+  const router = useRouter();
   const searchQuery = ref(route.query.q || "");
   
   const q = computed({
@@ -10,7 +11,7 @@ const useSearch = () => {
       return route.query.q
     },
     set: (val) => {
-      navigateTo({ path: "/search", query: { q: val } })
+      router.push({ path: "/search", query: { q: val } })
     }
   });
 
