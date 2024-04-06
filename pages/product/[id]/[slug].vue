@@ -2,14 +2,14 @@
   <div class="flex lg:justify-center">
     <div v-if="!pending && !error" class="flex flex-col">
       <div class="flex mx-auto mb-28 lg:mb-[17rem] xl:mb-20 mt-5 lg:mt-8 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[86rem] lg:h-[54rem]">
-        <div class="flex flex-col xl:flex-row-reverse">
+        <div class="flex flex-col xl:flex-row-reverse max-sm:px-[2vw] sm:px-[5vw] lg:px-0">
           <NuxtImg
             format="webp"
             :src="activeImage"
             :alt="product.imageAlt"
-            class="max-lg:mx-auto max-sm:h-[38rem] max-md:h-[48rem] max-lg:h-[52rem] lg:min-h-[54rem] w-[40rem] pointer-events-none"
+            class="max-lg:mx-auto max-sm:h-full max-md:h-[48rem] max-lg:h-[52rem] lg:min-h-[54rem] w-[40rem] pointer-events-none"
           />
-          <div class="flex xl:flex-col lg:ml-0 md:ml-[5vw] max-xl:mt-5 lg:mr-8">
+          <div class="flex xl:flex-col max-xl:mt-5 lg:mr-8">
             <button
               v-for="(image, index) in product.imageSrc"
               :key="index"
@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        <div class="flex flex-col pt-4 lg:pt-6 w-auto lg:w-[27rem] xl:w-[33rem] lg:ml-auto">
+        <div class="flex flex-col pt-4 lg:pt-6 max-sm:px-[2vw] sm:px-[5vw] lg:px-0 w-auto lg:w-[27rem] xl:w-[33rem] lg:ml-auto">
           <h1 class="text-3xl font-medium text-gray-900">{{ product.name }}</h1>
           <h2 class="text-4xl font-medium my-3 text-gray-900">${{ product.price }}</h2>
 		  
@@ -81,24 +81,26 @@
       </div>
     </div>
     
-    <div v-if="pending">
-      <ProductSkeleton />
-    </div>
+    <ProductSkeleton v-if="pending" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { useCartStore } from "~/stores/cart";
-
 const cartStore = useCartStore();
 
 const { id, slug } = useRoute().params;
-const { data: product, pending, error } = await useFetch(`/api/product/${id}/${slug}`);
+const { data: product, pending, error } = await useFetch(`/api/product/${id}/${slug}`, {
+  server: false,
+});
+computed(() => product());
+console.log(product.value)
+console.log(pending.value)
 
-const activeImage = ref(product.value.imageSrc[0]);
+const activeImage = ref(product.value ? product.value.imageSrc[0] : null);
 const selectedImageIndex = ref(0);
 
-const selectedSize = ref(product.value.size ? product.value.size[0] : null);
+const selectedSize = ref(product.value ? product.value.size[0] : null);
 const selectedSizeIndex = ref(0);
 
 const addToCart = (item) => {
