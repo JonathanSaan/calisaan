@@ -1,7 +1,7 @@
 <h1 align="center">Screenshots</h1>
 
 ## Home
-![img](https://github.com/JonathanSaan/calisaan/blob/df9ef05c38365e4bf222b301b27789c26b58883e/screenshots/screenshot1.png)
+![img](https://github.com/JonathanSaan/calisaan/blob/d839e8a5bcf0547448095e304aa7f2ab051b8b32/screenshots/screenshot1.png)
 
 ## Search
 ![img](https://github.com/JonathanSaan/calisaan/blob/df9ef05c38365e4bf222b301b27789c26b58883e/screenshots/screenshot2.png)
