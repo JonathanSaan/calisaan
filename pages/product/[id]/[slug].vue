@@ -1,6 +1,8 @@
 <template>
   <div class="flex lg:justify-center">
-    <div v-if="!pending && !error" class="flex flex-col">
+    <ProductSkeleton v-if="pending" />
+    
+    <div v-else class="flex flex-col">
       <div class="flex mx-auto mb-28 lg:mb-[17rem] xl:mb-20 mt-5 lg:mt-8 max-lg:flex-col max-lg:px-4 w-screen lg:w-[70rem] xl:w-[86rem] lg:h-[54rem]">
         <div class="flex flex-col xl:flex-row-reverse max-sm:px-[2vw] sm:px-[5vw] lg:px-0">
           <NuxtImg
@@ -80,42 +82,55 @@
         </UCarousel>
       </div>
     </div>
-    
-    <ProductSkeleton v-if="pending" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { useCartStore } from "~/stores/cart";
+
+interface Product {
+  id: number;
+  name: string;
+  slug: string;
+  imageSrc: Array<string>;
+  imageAlt: string;
+  description: string;
+  price: number;
+  tag: Array<string>;
+  size?: Array<string> | null;
+}
+
 const cartStore = useCartStore();
 
 const { id, slug } = useRoute().params;
 const { data: product, pending, error } = await useFetch(`/api/product/${id}/${slug}`, {
   server: false,
 });
-computed(() => product());
-console.log(product.value)
-console.log(pending.value)
 
-const activeImage = ref(product.value ? product.value.imageSrc[0] : null);
-const selectedImageIndex = ref(0);
+const activeImage = ref<string | null>(null);
+const selectedImageIndex = ref<number>(0);
 
-const selectedSize = ref(product.value ? product.value.size[0] : null);
-const selectedSizeIndex = ref(0);
+const selectedSize = ref<string | null>(null);
+const selectedSizeIndex = ref<number>(0);
 
-const addToCart = (item) => {
+watchEffect(() => {
+  activeImage.value = product.value?.imageSrc[0] || null;
+  selectedSize.value = product.value?.size[0] || null;
+});
+
+const addToCart = (item: Product) => {
   const itemToAdd = { ...product.value, size: selectedSize.value };
   cartStore.addToCart(itemToAdd);
 };
 
-const setActiveImageOrSelectSize = (newValue, type) => {
+const setActiveImageOrSelectSize = (newValue: string, type: "image"): void => {
   if (type === "image") {
     return activeImage.value = newValue;
   }
   selectedSize.value = newValue;
 };
 
-const setSelectedStyle = (index, type) => {
+const setSelectedStyle = (index: number, type: "image"): void => {
   if (type === "image") {
     return selectedImageIndex.value = index;
   } 
