@@ -8,6 +8,7 @@
       :ui="{ color: 'text-black', base: 'cursor-pointer' }"
       :value="label"
       @change="handleCheckboxChange($event, label, 'category')"
+      :v-model="categoryLabels"
       :checked="isChecked(label, 'category')"
     >
       <template #label>
@@ -25,6 +26,7 @@
       :ui="{ color: 'text-black', base: 'cursor-pointer' }"
       :value="label"
       @change="handleCheckboxChange($event, label)"
+      :v-model="priceLabels"
       :checked="isChecked(label)"
     >
       <template #label>
@@ -34,21 +36,32 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import useFilter from "~/utils/filterUtils";
-const { selectedCategory, selectedPrice, applyFilters } = useFilter();
 
-const categoryLabels = ["Fitness Equipment", "Clothing", "Tops Wear", "Bottom Wear", "Other"];
-const priceLabels = ["Under $30.00", "$30.00 - $70.00", "$70.00 - $100.00"];
+interface FilterState {
+  selectedCategory: Ref<string>;
+  selectedPrice: Ref<string>;
+  applyFilters: () => void;
+}
 
-const handleCheckboxChange = (event, value, type) => {
+interface CheckboxChangeEvent extends Event {
+  target: HTMLInputElement;
+}
+
+const { selectedCategory, selectedPrice, applyFilters }: FilterState = useFilter();
+
+const categoryLabels: string[] = ["Fitness Equipment", "Clothing", "Tops Wear", "Bottom Wear", "Other"];
+const priceLabels: string[] = ["Under $30.00", "$30.00 - $70.00", "$70.00 - $100.00"];
+
+const handleCheckboxChange = (event: CheckboxChangeEvent, value: string, type: "category"): void => {
   if (type === "category") {
     return selectedCategory.value = event.target.checked ? value : null;
   }
   return selectedPrice.value = event.target.checked ? value : null;
 };
 
-const isChecked = (label, type) => {
+const isChecked = (label: string, type: "category"): boolean => {
   if (type === "category") {
     return selectedCategory.value === label;
   }

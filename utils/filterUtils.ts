@@ -4,8 +4,8 @@ import { useRoute, useRouter } from "vue-router";
 const useFilter = () => {
   const route = useRoute();
   const router = useRouter();
-  const selectedCategory = ref(route.query.category || "");
-  const selectedPrice = ref(route.query.price || "");
+  const selectedCategory = ref<string>(route.query.category || "");
+  const selectedPrice = ref<string>(route.query.price || "");
 
   const category = computed({
     get: () => {

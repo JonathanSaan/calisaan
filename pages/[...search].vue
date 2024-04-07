@@ -49,13 +49,13 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import useSearch from "~/utils/searchUtils";
 import useFilter from "~/utils/filterUtils";
 
 const { q } = useSearch();
 const { category, price } = useFilter();
-const isSidebarVisible = ref(false);
+const isSidebarVisible = ref<boolean>(false);
 
 const { data: allProducts, pending, error } = await useFetch("/api/search.get", {
   query: { q, category, price }

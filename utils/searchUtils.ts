@@ -4,7 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 const useSearch = () => {
   const route = useRoute();
   const router = useRouter();
-  const searchQuery = ref(route.query.q || "");
+  const searchQuery = ref<string>(route.query.q || "");
   
   const q = computed({
     get: () => {
